@@ -1,0 +1,18 @@
+.main-menu {
+    display: block;
+    position: fixed;
+    top: 60px;
+    left: 0px;
+    width: 200px;
+    bottom: 0px;
+    background-color: #67759b;
+    .menu-item {
+        font-size: 20px;
+        a {
+            padding: 0px 20px 0px 30px;
+            display: block;
+            line-height: 50px;
+            color: #ececec;
+        }
+    }
+}

@@ -1,0 +1,20 @@
+.css-div {
+    padding-left: 15px;
+}
+
+.css-div h1 {
+    color: #FFD700;
+}
+
+.css-div .css-div-content {
+    padding-left: 24px;
+}
+
+.minxin-div {
+    background-color: #777777;
+}
+
+.minxin-div .minxin-paragraph {
+    padding-left: 26px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
