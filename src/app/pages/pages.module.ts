@@ -9,13 +9,11 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 // External plugins
 import { MarkdownModule } from 'ngx-markdown';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { ArrayBufferComponent } from './main/es6/array-buffer/array-buffer.component';
 
 @NgModule({
     declarations: [
         ...Components,
-        ...ChildsComponent,
-        ArrayBufferComponent
+        ...ChildsComponent
     ],
     imports: [
         FormsModule,

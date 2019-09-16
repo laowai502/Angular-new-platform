@@ -33,9 +33,16 @@ export class Menu implements OnInit, OnDestroy {
                 items: [
                     { // 测试多重带参子路由
                         label: 'child-route-params',
-                        icon: 'pi pi-home',
+                        icon: 'pi pi-star-o',
                         command: () => {
                             this.router.navigate(['/pages/about']);
+                        }
+                    },
+                    { // angular8 different loading
+                        label: 'Different Loading',
+                        icon: 'pi pi-star-o',
+                        command: () => {
+                            this.router.navigate(['/pages/angular/diff-loading']);
                         }
                     }
                 ]

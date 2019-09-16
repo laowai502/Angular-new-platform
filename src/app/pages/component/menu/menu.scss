@@ -26,6 +26,9 @@
         .ui-menuitem {
             .ui-menuitem-link {
                 padding-left: 26px !important;
+                .ui-menuitem-icon {
+                    vertical-align: middle !important;
+                }
             }
         }
     }
