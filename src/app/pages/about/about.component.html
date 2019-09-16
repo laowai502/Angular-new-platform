@@ -3,12 +3,10 @@
         <p class="p10">about works! {{ testTemplete }}</p>
         <div class="p10">
             <button (click)="toChild()">To child page</button>
-            <input type="text" [(ngModel)]="inputValue" id="inputValue">
         </div>
         <div class="block p10">
             <button (click)="toLogin()">To login page</button>
         </div>
-        <app-cmt-child [data]="data"></app-cmt-child>
     </div>
     <router-outlet></router-outlet>
 </section>

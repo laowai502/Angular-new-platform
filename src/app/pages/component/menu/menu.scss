@@ -15,4 +15,12 @@
             color: #ececec;
         }
     }
+    .ui-menuitem {
+        .ui-panelmenu-header-link {
+            padding: 0px;
+        }
+        .ui-menuitem-link {
+            padding-left: 40px;
+        }
+    }
 }

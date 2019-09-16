@@ -4,18 +4,27 @@ import { FormsModule } from '@angular/forms';
 import { PagesRoutingModule, Components } from './pages-routing.module';
 import { ChildsComponent } from './component/component';
 
-import { ROTooltipModule } from '../components/ro-toolTip/tooltip.module';
-// import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+// External plugins
+import { MarkdownModule } from 'ngx-markdown';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { ArrayBufferComponent } from './es6/array-buffer/array-buffer.component';
 
 @NgModule({
     declarations: [
         ...Components,
-        ...ChildsComponent
+        ...ChildsComponent,
+        ArrayBufferComponent
     ],
     imports: [
         FormsModule,
         PagesRoutingModule,
-        ROTooltipModule.forRoot(),
+        HttpClientModule,
+        PanelMenuModule,
+        MarkdownModule.forRoot({
+            loader: HttpClient // optional, only if you use [src] attribute
+        })
         // TooltipModule.forRoot()
     ]
 })

@@ -1,28 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
 
-  test = {
-    a: 1
-  };
-  b = null;
+    md = `
+        ### laowai
+    `;
 
-  constructor() { }
+    str = '123123132';
+    // str = '123<br>123<br>132';
 
-  ngOnInit() {
-    console.info(111111);
-  }
+    constructor() {
+        this.str = this.str.replace(/<br>/g, '\n');
+    }
 
-  clickTest() {
-    this.b = this.test;
-    this.b.a = 2;
-    console.info(this.test);
-    console.info(this.b);
-  }
+    ngOnInit() {}
 
 }

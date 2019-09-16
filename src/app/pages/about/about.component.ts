@@ -11,7 +11,6 @@ import { filter } from 'rxjs/operators';
 export class AboutComponent implements OnInit, OnDestroy {
 
   data: any = 'string';
-  inputValue: string;
   myDestory: any;
 
   public testTemplete: string;

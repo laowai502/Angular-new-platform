@@ -1,7 +1,5 @@
-<section>
-  <p>home works!</p>
-  <div class="home-content">Laowai testing</div>
-  <div class="home-content">{{ test.a }}</div>
-  <p tooltip="I am coming soon" isOpen="true">0.0</p>
-  <button (click)="clickTest()">click</button>
+<section class="main-pages-content">
+    <textarea  [(ngModel)]="str" placeholder="Enter text here"></textarea>
+    <pre>{{str}}</pre>
+    <p>{{str}}</p>
 </section>

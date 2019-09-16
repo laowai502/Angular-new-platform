@@ -4,8 +4,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-
-// import { ROTooltipModule  } from './components/ro-toolTip/tooltip.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -14,8 +14,9 @@ import { LoginComponent } from './login/login.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    // ROTooltipModule.forRoot()
+    CommonModule,
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   exports: [],
   providers: [],

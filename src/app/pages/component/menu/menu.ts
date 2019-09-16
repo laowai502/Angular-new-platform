@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-// import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
+import { MenuItem } from 'primeng/api';
+
+import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 // import { filter } from 'rxjs/operators';
 
 @Component({
@@ -10,11 +12,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 })
 export class Menu implements OnInit, OnDestroy {
 
+    public items: MenuItem[];
+
     // destroyRouter: any;
 
     constructor(
         // private routeParams: ActivatedRoute,
-        // private router: Router
+        private router: Router
     ) {}
 
     ngOnInit() {
@@ -23,6 +27,39 @@ export class Menu implements OnInit, OnDestroy {
         // ).subscribe((event: NavigationStart) => {
         //     console.log(event);
         // });
+        this.items = [
+            {
+                label: 'Angular',
+                items: [
+                    { // 测试多重带参子路由
+                        label: 'child-route-params',
+                        icon: 'pi pi-home',
+                        command: () => {
+                            this.router.navigate(['/pages/about']);
+                        }
+                    }
+                ]
+            },
+            {
+                label: 'RxJS',
+                items: [
+                    { label: 'New', icon: 'pi pi-plus' },
+                    { label: 'Open', icon: 'pi pi-download' }
+                ]
+            },
+            {
+                label: 'Es6',
+                items: [
+                    {
+                        label: 'ArrayBuffer',
+                        icon: 'pi pi-inbox',
+                        command: () => {
+                            this.router.navigate(['/pages/home']);
+                        }
+                    }
+                ]
+            }
+        ];
     }
 
     ngOnDestroy() {
