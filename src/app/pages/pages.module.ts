@@ -9,7 +9,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 // External plugins
 import { MarkdownModule } from 'ngx-markdown';
 import { PanelMenuModule } from 'primeng/panelmenu';
-import { ArrayBufferComponent } from './es6/array-buffer/array-buffer.component';
+import { ArrayBufferComponent } from './main/es6/array-buffer/array-buffer.component';
 
 @NgModule({
     declarations: [
@@ -25,7 +25,6 @@ import { ArrayBufferComponent } from './es6/array-buffer/array-buffer.component'
         MarkdownModule.forRoot({
             loader: HttpClient // optional, only if you use [src] attribute
         })
-        // TooltipModule.forRoot()
     ]
 })
 export class PagesModule {}

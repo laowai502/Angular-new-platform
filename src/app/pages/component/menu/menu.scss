@@ -3,7 +3,7 @@
     position: fixed;
     top: 60px;
     left: 0px;
-    width: 200px;
+    width: 220px;
     bottom: 0px;
     background-color: #67759b;
     .menu-item {
@@ -15,12 +15,18 @@
             color: #ececec;
         }
     }
-    .ui-menuitem {
+    ::ng-deep {
         .ui-panelmenu-header-link {
-            padding: 0px;
+            padding-left: 20px !important;
+            .ui-panelmenu-icon {
+                float: right;
+                margin-top: 3px;
+            }
         }
-        .ui-menuitem-link {
-            padding-left: 40px;
+        .ui-menuitem {
+            .ui-menuitem-link {
+                padding-left: 26px !important;
+            }
         }
     }
 }

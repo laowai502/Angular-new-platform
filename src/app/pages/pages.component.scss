@@ -17,12 +17,12 @@
     .main-container {
         display: block;
         position: relative;
-        height: calc(100vh - 60px);
+        height: calc(100vh);
         padding-top: 60px; 
         background-color: #e0e0e0;
         .main-content {
-            height: calc(100vh - 80px);
-            padding: 10px 10px 10px 210px;
+            height: calc(100vh - 60px);
+            padding: 10px 10px 10px 230px;
             ::ng-deep .main-pages-content {
                 width: 100%;
                 background-color: #FFFFFF;

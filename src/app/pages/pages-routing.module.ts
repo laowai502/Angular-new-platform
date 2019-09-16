@@ -1,13 +1,13 @@
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { NewsComponent } from './news/news.component';
-import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './main/home/home.component';
+import { NewsComponent } from './main/news/news.component';
+import { AboutComponent } from './main/about/about.component';
 import { PagesComponent } from './pages.component';
-import { DisplayComponent } from './display/display.component';
-import { AboutOne } from './about/about_one/about_one';
-import { About_One_Child } from './about/about_one/about_one_one/about_one_one';
+import { DisplayComponent } from './main/display/display.component';
+import { AboutOne } from './main/about/about_one/about_one';
+import { About_One_Child } from './main/about/about_one/about_one_one/about_one_one';
 
 export const Components = [
     HomeComponent,
