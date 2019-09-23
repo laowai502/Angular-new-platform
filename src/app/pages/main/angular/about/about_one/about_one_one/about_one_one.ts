@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'about-one-one',
     templateUrl: './about_one_one.html',
-    styleUrls: ['./about_one_one.scss']
+    styleUrls: []
 })
 // tslint:disable-next-line: class-name
 export class About_One_Child implements OnInit {

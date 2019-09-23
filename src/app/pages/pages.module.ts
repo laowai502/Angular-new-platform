@@ -7,8 +7,11 @@ import { ChildsComponent } from './component/component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // External plugins
-import { MarkdownModule } from 'ngx-markdown';
+import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
+
+import { MarkdownModule } from 'ngx-markdown';
+import { NgxEchartsModule } from 'ngx-echarts';
 
 @NgModule({
     declarations: [
@@ -20,9 +23,11 @@ import { PanelMenuModule } from 'primeng/panelmenu';
         PagesRoutingModule,
         HttpClientModule,
         PanelMenuModule,
+        ButtonModule,
         MarkdownModule.forRoot({
             loader: HttpClient // optional, only if you use [src] attribute
-        })
+        }),
+        NgxEchartsModule
     ]
 })
 export class PagesModule {}

@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { HomeComponent } from './main/home/home.component';
 import { NewsComponent } from './main/news/news.component';
-import { AboutComponent } from './main/about/about.component';
+import { AboutComponent } from './main/angular/about/about.component';
 import { DisplayComponent } from './main/display/display.component';
 
 import { ArrayBufferComponent } from './main/es6/array-buffer/array-buffer.component';
@@ -11,8 +11,10 @@ import { DiffLoadingComponent } from './main/angular/diff-loading/diff-loading.c
 
 import { PagesComponent } from './pages.component';
 
-import { AboutOne } from './main/about/about_one/about_one';
-import { About_One_Child } from './main/about/about_one/about_one_one/about_one_one';
+import { AboutOne } from './main/angular/about/about_one/about_one';
+import { About_One_Child } from './main/angular/about/about_one/about_one_one/about_one_one';
+import { CharOne } from './main/es6/array-buffer/component/charOne';
+import { CharTwo } from './main/es6/array-buffer/component/charTwo';
 
 export const Components = [
     HomeComponent,
@@ -21,9 +23,13 @@ export const Components = [
     DisplayComponent,
     ArrayBufferComponent,
     DiffLoadingComponent,
+    // router-outlet
     PagesComponent,
+    // child
     AboutOne,
-    About_One_Child
+    About_One_Child,
+    CharOne,
+    CharTwo
 ];
 
 const routes: Routes = [
@@ -54,6 +60,10 @@ const routes: Routes = [
                         ]
                     }
                 ]
+            },
+            {
+                path: 'es6/array-buffer',
+                component: ArrayBufferComponent
             },
             {
                 path: 'home',

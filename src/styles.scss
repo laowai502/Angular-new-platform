@@ -29,9 +29,28 @@ li {
     padding: 10px;
 }
 
+.p16 {
+    padding: 16px;
+}
+
+.mt12 {
+    margin-top: 12px;
+}
+
+.mr12 {
+    margin-right: 12px !important;
+}
+
 .hidden {
     display: none !important;
 }
 .show {
     display: block !important;
+}
+
+/* coverage other lib */
+button:focus {
+    border-color: rgb(85, 102, 255);
+    background-color: rgb(85, 102, 255);
+    color: #FFF;
 }

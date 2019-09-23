@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
     selector: 'about-one',
     templateUrl: './about_one.html',
-    styleUrls: ['./about_one.scss']
+    styleUrls: []
 })
 export class AboutOne implements OnInit {
 

@@ -61,7 +61,7 @@ export class Menu implements OnInit, OnDestroy {
                         label: 'ArrayBuffer',
                         icon: 'pi pi-inbox',
                         command: () => {
-                            this.router.navigate(['/pages/home']);
+                            this.router.navigate(['/pages/es6/array-buffer']);
                         }
                     }
                 ]

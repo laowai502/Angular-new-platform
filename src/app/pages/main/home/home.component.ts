@@ -11,7 +11,7 @@ export class HomeComponent implements OnInit {
     //     ### laowai
     // `;
 
-    str = '123123132';
+    str = 'test string';
     // str = '123<br>123<br>132';
 
     constructor() {

@@ -15,6 +15,23 @@ const a = {
     }
 };
 
+Object.entries(a).length === 0 && obj.constructor === Object;
 
+var aa = {
+    b: 1,
+    c: 2,
+    d: 3
+};
 
-Object.entries(a).length === 0 && obj.constructor === Object
+var c = {
+    b: 2
+};
+
+var b = {};
+
+console.log(Object.getOwnPropertyNames(aa));
+console.log(Object.getOwnPropertyNames(b));
+
+delete c.a;
+
+console.info(c);
