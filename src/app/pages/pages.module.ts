@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule, Components } from './pages-routing.module';
 import { ChildsComponent } from './component/component';
@@ -20,6 +21,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     ],
     imports: [
         FormsModule,
+        CommonModule,
         PagesRoutingModule,
         HttpClientModule,
         PanelMenuModule,

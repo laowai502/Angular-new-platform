@@ -6,22 +6,22 @@ import { NewsComponent } from './main/news/news.component';
 import { AboutComponent } from './main/angular/about/about.component';
 import { DisplayComponent } from './main/display/display.component';
 
-import { ArrayBufferComponent } from './main/es6/array-buffer/array-buffer.component';
+import { NgxEchartsComponent } from './main/plugin/ngx-echarts/ngx-echarts.component';
 import { DiffLoadingComponent } from './main/angular/diff-loading/diff-loading.component';
 
 import { PagesComponent } from './pages.component';
 
 import { AboutOne } from './main/angular/about/about_one/about_one';
 import { About_One_Child } from './main/angular/about/about_one/about_one_one/about_one_one';
-import { CharOne } from './main/es6/array-buffer/component/charOne';
-import { CharTwo } from './main/es6/array-buffer/component/charTwo';
+import { CharOne } from './main/plugin/ngx-echarts/component/charOne';
+import { CharTwo } from './main/plugin/ngx-echarts/component/charTwo';
 
 export const Components = [
     HomeComponent,
     NewsComponent,
     AboutComponent,
     DisplayComponent,
-    ArrayBufferComponent,
+    NgxEchartsComponent,
     DiffLoadingComponent,
     // router-outlet
     PagesComponent,
@@ -62,9 +62,13 @@ const routes: Routes = [
                 ]
             },
             {
-                path: 'es6/array-buffer',
-                component: ArrayBufferComponent
+                path: 'plugin/ngx-echarts',
+                component: NgxEchartsComponent
             },
+            // {
+            //     path: 'es6/array-buffer',
+            //     component: ArrayBufferComponent
+            // },
             {
                 path: 'home',
                 component: HomeComponent

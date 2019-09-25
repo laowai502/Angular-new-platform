@@ -1,0 +1,17 @@
+<section class="main-pages-content">
+    <div class="ib m16">
+        <article>
+            <h5 class="title-border">Ngx-Echarts@4.2.1</h5>
+            <p class="lht26">
+                一款Angular directive, 与Angular契合度较好, 提供Custom Build
+                <br>
+                <a href="https://github.com/xieziyu/ngx-echarts">https://github.com/xieziyu/ngx-echarts</a>
+            </p>
+        </article>
+        <button class="mt16" pButton type="button" (click)="changeWidth()" label="Change Width"></button>
+    </div>
+    <div [ngStyle]="{'width': width}">
+        <app-test-char-one></app-test-char-one>
+        <app-test-char-two></app-test-char-two>
+    </div>
+</section>

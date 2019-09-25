@@ -48,6 +48,18 @@ export class Menu implements OnInit, OnDestroy {
                 ]
             },
             {
+                label: 'Plugin',
+                items: [
+                    {
+                        label: 'Ngx-echarts-test',
+                        icon: 'pi pi-star-o',
+                        command: () => {
+                            this.router.navigate(['/pages/plugin/ngx-echarts']);
+                        }
+                    }
+                ]
+            },
+            {
                 label: 'RxJS',
                 items: [
                     { label: 'New', icon: 'pi pi-plus' },
@@ -61,7 +73,7 @@ export class Menu implements OnInit, OnDestroy {
                         label: 'ArrayBuffer',
                         icon: 'pi pi-inbox',
                         command: () => {
-                            this.router.navigate(['/pages/es6/array-buffer']);
+                            // this.router.navigate(['/pages/es6/array-buffer']);
                         }
                     }
                 ]

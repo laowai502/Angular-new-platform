@@ -16,18 +16,29 @@
         }
     }
     ::ng-deep {
-        .ui-panelmenu-header-link {
-            padding-left: 20px !important;
-            .ui-panelmenu-icon {
-                float: right;
-                margin-top: 3px;
-            }
-        }
-        .ui-menuitem {
-            .ui-menuitem-link {
-                padding-left: 26px !important;
-                .ui-menuitem-icon {
-                    vertical-align: middle !important;
+        .ui-panelmenu {
+            .ui-panelmenu-panel {
+                outline: none;
+                margin-top: 0px;
+                .ui-panelmenu-header {
+                    outline: none;
+                    .ui-panelmenu-header-link {
+                        outline: none;
+                        padding: 16px 10px 16px 26px !important;
+                        .ui-panelmenu-icon {
+                            float: right;
+                            margin-top: 3px;
+                        }
+                    }
+                }
+                
+                .ui-menuitem {
+                    .ui-menuitem-link {
+                        padding: 16px 10px 16px 26px !important;
+                        .ui-menuitem-icon {
+                            vertical-align: middle !important;
+                        }
+                    }
                 }
             }
         }
