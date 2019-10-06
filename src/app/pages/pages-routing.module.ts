@@ -7,6 +7,8 @@ import { AboutComponent } from './main/angular/about/about.component';
 import { DisplayComponent } from './main/display/display.component';
 
 import { NgxEchartsComponent } from './main/plugin/ngx-echarts/ngx-echarts.component';
+import { AngularBusyComponent } from './main/plugin/angular-busy/angular-busy.component';
+
 import { DiffLoadingComponent } from './main/angular/diff-loading/diff-loading.component';
 
 import { PagesComponent } from './pages.component';
@@ -21,7 +23,9 @@ export const Components = [
     NewsComponent,
     AboutComponent,
     DisplayComponent,
+    // angular-plugin
     NgxEchartsComponent,
+    AngularBusyComponent,
     DiffLoadingComponent,
     // router-outlet
     PagesComponent,
@@ -64,6 +68,10 @@ const routes: Routes = [
             {
                 path: 'plugin/ngx-echarts',
                 component: NgxEchartsComponent
+            },
+            {
+                path: 'plugin/angular-busy',
+                component: AngularBusyComponent
             },
             // {
             //     path: 'es6/array-buffer',

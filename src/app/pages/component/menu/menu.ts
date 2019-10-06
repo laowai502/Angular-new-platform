@@ -56,6 +56,13 @@ export class Menu implements OnInit, OnDestroy {
                         command: () => {
                             this.router.navigate(['/pages/plugin/ngx-echarts']);
                         }
+                    },
+                    {
+                        label: 'Angular-busy',
+                        icon: 'pi pi-star-o',
+                        command: () => {
+                            this.router.navigate(['/pages/plugin/angular-busy']);
+                        }
                     }
                 ]
             },
