@@ -13,7 +13,8 @@ export class NgxEchartsComponent implements OnInit {
 
     ngOnInit() {}
 
-    changeWidth() {
+    changeWidth(e) {
+        console.info(e);
         this.width = this.width === '100%' ? '90%' : '100%';
     }
 
