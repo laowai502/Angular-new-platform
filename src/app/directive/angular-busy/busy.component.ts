@@ -22,7 +22,7 @@ const timing = '.3s ease';
     selector: 'ng-busy',
     template: `
         <div [ngClass]="wrapperClass" *ngIf="isActive()" @flyInOut>
-            <ng-container @ngComponentOutlet="TemplateComponent; ngModuleFactory: nmf"></ng-container>
+            <ng-container *ngComponentOutlet="TemplateComponent; ngModuleFactory: nmf"></ng-container>
         </div>
     `,
     animations: [

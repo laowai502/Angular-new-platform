@@ -18,7 +18,7 @@ import { BusyBackdropComponent } from './busy-backdrop.component';
  */
 @Directive({
     // tslint:disable-next-line: directive-selector
-    selector: 'ngBusy',
+    selector: '[ngBusy]',
     providers: [PromiseTrackerService]
 })
 export class BusyDirective implements DoCheck {
@@ -65,6 +65,7 @@ export class BusyDirective implements DoCheck {
             this.template = options.template;
             this.backdrop = options.backdrop;
 
+            // tslint:disable-next-line: no-unused-expression
             options.backdrop && this.createBackdrop();
 
             this.createBusy();

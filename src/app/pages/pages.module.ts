@@ -11,6 +11,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
 
+import { BusyModule } from '../directive/angular-busy/busy.module';
+import { BusyConfig } from '../directive/angular-busy/busy.config';
+
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxEchartsModule } from 'ngx-echarts';
 
@@ -26,6 +29,11 @@ import { NgxEchartsModule } from 'ngx-echarts';
         HttpClientModule,
         PanelMenuModule,
         ButtonModule,
+        BusyModule.forRoot(
+            new BusyConfig({
+                minDuration: 600
+            })
+        ),
         MarkdownModule.forRoot({
             loader: HttpClient // optional, only if you use [src] attribute
         }),

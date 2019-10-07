@@ -11,7 +11,7 @@ const timing = '.3s ease';
 @Component({
     selector: 'ng-busy-backdrop',
     template: `
-        <div class="ng-busy-backdrop @fadeInOut *ngIf="isActive()">
+        <div class="ng-busy-backdrop" @fadeInOut *ngIf="isActive()">
         </div>
     `,
     animations: [

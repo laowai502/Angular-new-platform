@@ -10,6 +10,11 @@ import { CommonModule } from '@angular/common';
 import { JitCompilerFactory } from '@angular/platform-browser-dynamic';
 import { BusyConfig } from './busy.config';
 
+import { BusyDirective } from './busy.directive';
+import { BusyService } from './busy.service';
+import { BusyComponent } from './busy.component';
+import { BusyBackdropComponent } from './busy-backdrop.component';
+
 // use JitCompiler when workground with AoT
 export function createJitCompiler() {
     // return new JitCompilerFactory([{useDebug: false, useJit: true}]).createCompiler();
@@ -18,10 +23,20 @@ export function createJitCompiler() {
 
 @NgModule({
     imports: [CommonModule],
-    declarations: [],
-    providers: [],
-    exports: [],
-    entryComponents: []
+    declarations: [
+        BusyDirective,
+        BusyComponent,
+        BusyBackdropComponent
+    ],
+    providers: [
+        BusyService,
+        { provide: Compiler, useFactory: createJitCompiler }
+    ],
+    exports: [BusyDirective],
+    entryComponents: [
+        BusyComponent,
+        BusyBackdropComponent
+    ]
 })
 export class BusyModule {
     static forRoot(config: BusyConfig): ModuleWithProviders {
