@@ -44,6 +44,13 @@ export class Menu implements OnInit, OnDestroy {
                         command: () => {
                             this.router.navigate(['/pages/angular/diff-loading']);
                         }
+                    },
+                    { // dom operate in angular
+                        label: 'Dom',
+                        icon: 'pi pi-star-o',
+                        command: () => {
+                            this.router.navigate(['/pages/angular/dom']);
+                        }
                     }
                 ]
             },

@@ -13,6 +13,9 @@ import { DiffLoadingComponent } from './main/angular/diff-loading/diff-loading.c
 
 import { PagesComponent } from './pages.component';
 
+import { DomComponent } from './main/angular/dom/dom.component';
+import { DomChildComponent } from './main/angular/dom/domChild';
+
 import { AboutOne } from './main/angular/about/about_one/about_one';
 import { About_One_Child } from './main/angular/about/about_one/about_one_one/about_one_one';
 import { CharOne } from './main/plugin/ngx-echarts/component/charOne';
@@ -33,7 +36,10 @@ export const Components = [
     AboutOne,
     About_One_Child,
     CharOne,
-    CharTwo
+    CharTwo,
+
+    DomComponent,
+    DomChildComponent,
 ];
 
 const routes: Routes = [
@@ -44,6 +50,10 @@ const routes: Routes = [
             {
                 path: 'angular/diff-loading',
                 component: DiffLoadingComponent
+            },
+            {
+                path: 'angular/dom',
+                component: DomComponent
             },
             {
                 path: 'news',

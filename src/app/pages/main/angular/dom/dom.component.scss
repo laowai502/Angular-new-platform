@@ -1,0 +1,99 @@
+::ng-deep {
+    .cd-accordion-menu {
+        width: 90%;
+        max-width: 400px;
+        background: #4d5158;
+        margin: 0;
+        box-shadow: 0 4px 40px #dddddd;
+        border-radius: 6px;
+        ul {
+            display: none;
+        }
+        input[type=checkbox] {
+            position: absolute;
+            opacity: 0;
+        }
+        label, a {
+            position: relative;
+            display: block;
+            padding: 12px 18px 12px 64px;
+            background: #4d5158;
+            box-shadow: inset 0 -1px #555960;
+            color: #ffffff;
+            font-size: 16px;
+        }
+        label {
+            cursor: pointer;
+            &::before, &::after {
+                background: url(src/assets/images/cd-icons.svg) no-repeat;
+            }
+            &::before { /* arrow icon */
+                left: 18px;
+                background-position: 0 0;
+                
+            }
+            &::after {
+                left: 41px;
+                background-position: -16px 0;
+            }
+        }
+        label::before {
+            transform: translateY(-50%) rotate(-90deg);
+        }
+        label::after, a::after {
+            transform: translateY(-50%);
+        }
+        label::before, label::after, a::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            position: absolute;
+            top: 50%;
+        }
+        a::after {
+            left: 36px;
+            background: url(src/assets/images/cd-icons.svg) no-repeat -48px 0;
+        }
+
+        input[type=checkbox]:checked + label::before {
+            transform: translateY(-50%);
+        }
+        input[type=checkbox]:checked + label::after {
+            background-position: -32px 0;
+        }
+
+        input[type=checkbox]:checked + label + ul, input[type=checkbox]:checked + label:nth-of-type(n) + ul {
+            display: block;
+        }
+
+        $left1: 82px;
+        $left2: 36px;
+        $left3: 59px;
+        
+        @mixin ChildOffsetLeft($left1, $left2, $left3){
+            label, a {
+                padding-left: $left1;
+            }
+            label::before {
+                left: $left2;
+            }
+            label::after, a::after {
+                left: $left3;
+            }
+        }
+
+        ul {
+            label, a {
+                background: #35383d;
+            }
+            @include ChildOffsetLeft($left1, $left2, $left3);
+            ul {
+                @include ChildOffsetLeft($left1 + 18px, $left2 + 18px, $left3 + 18px);
+                ul {
+                    @include ChildOffsetLeft($left1 + 18px * 2, $left2 + 18px * 2, $left3 + 18px * 2);
+                }
+            }
+        }
+    }
+}
