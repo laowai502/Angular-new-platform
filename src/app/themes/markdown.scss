@@ -34,6 +34,9 @@
 /* materialize global css reset for demo puprose */
 markdown {
     ::ng-deep {
+        pre {
+          margin-top: 0px;
+        }
         p,ol,ul {
           font-family: microsoft yaHei;
           color: #5a5a5a;

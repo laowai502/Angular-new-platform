@@ -28,20 +28,30 @@
 <br>
 
 &#x2003;&#x2003;<font color=#FF0000>注意</font>，升级到 Angular8.0.0 所有的 @ViewChild 必须加一个静态标识属性 { static: boolean }, 此处是升级版本需要迁移代码的一部分；
-其实部分应用会将其设置为 static: false, 基本上就是一个默认值了，但其存在是因为（angular对于前端来说是一个很重的框架）依赖其或者与其高耦合的类库并不会第一时间升级，由于应用程序编译时会用到当前的 Angular 版本，所以如果我们修改了默认值，库里组件的查询行为就会变成版本 8 的这个默认值，这可能导致破坏性变更。而现在这种方式，应用程序的依赖项在转换过程中的行为就和之前的版本是一样的。但在 Angular 9 及更高版本中，任意删除 {static: false} 标志都是安全的，届时，我们会在原理图中为你完成这个清理工作。
+其实部分应用会将其设置为 static: false, 基本上就是一个默认值了，但其存在是因为（angular对于前端来说是一个很重的框架）依赖其或者与其高耦合的类库并不会第一时间升级，会导致不可控的编译错误，等到 Angular 9 及更高版本中，任意删除 {static: false} 标志都是安全的
+
+<br>
 
 ```javascript
-// 之前
-@ViewChild('foo') foo: ElementRef;
+    // 之前
+    @ViewChild('foo') foo: ElementRef;
+    //之后
+    @ViewChild('foo', {static: true}) foo: ElementRef; // query results available in ngOnInit
+    OR
+    @ViewChild('foo', {static: false}) foo: ElementRef; // query results available in ngAfterViewInit
+```
 
+<br>
 
-//之后
+&#x2003;&#x2003;理解一个概念，Angular虽然不像react使用虚拟dom，但是其通过zone.js进行脏检查; 所有元素在生命周期中存在应用阶段和渲染阶段，检测计算完成后生成真实dom，这也是为什么操作通过ElementRef或者 @viewChild 获取元素，一定要在 ngAfterViewInit 周期之后再使用。 详情 [https://angular.cn/guide/static-query-migration#what-does-this-flag-mean](https://angular.cn/guide/static-query-migration#what-does-this-flag-mean)
 
-@ViewChild('foo', {static: true}) foo: ElementRef; // query results available in ngOnInit
+<br>
 
-OR
-
-@ViewChild('foo', {static: false}) foo: ElementRef; // query results available in ngAfterViewInit
+```javascript
+    // eg
+    @ViewChild(Foo) foo: Foo;
+    <div foo></div> // static
+    <div foo *ngIf="showing"></div> // dynamic
 ```
 
 #### Renderer2 (API > @angular/core)
