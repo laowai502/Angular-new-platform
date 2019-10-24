@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-import { HttpClient } from '@angular/common/http';
-
 @Component({
     selector: 'app-angular-busy',
     templateUrl: './angular-busy.component.html',
@@ -9,14 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AngularBusyComponent implements OnInit {
 
-    busy: Promise<any>;
+    loading = false;
 
-    constructor(private http: HttpClient) {}
+    constructor() {}
 
     ngOnInit() {}
-
-    play() {
-        this.busy = this.http.get('https://httpbin.org/delay/1').toPromise();
-    }
 
 }
