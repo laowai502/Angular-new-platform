@@ -16,10 +16,24 @@ export class DynamicTestService {
         private injector: Injector
     ) {}
 
-    public appendToBody(): void {
+    private appendToBody() {
         const componentFactory = this.cfr.resolveComponentFactory(DynamicTestComponent);
         const componentRef = componentFactory.create(this.injector);
         this.appRef.attachView(componentRef.hostView);
+
+        const domElem = (componentRef.hostView as EmbeddedViewRef<any>).rootNodes[0] as HTMLElement;
+        document.body.appendChild(domElem);
+
+        this.DC = componentRef;
+    }
+
+    private removeFromBody() {
+        this.appRef.detachView(this.DC.hostView);
+        this.DC.destroy();
+    }
+
+    public open() {
+        this.appendToBody();
     }
 }
 

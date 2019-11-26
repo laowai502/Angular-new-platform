@@ -7,12 +7,11 @@ import { DynamicTestComponent } from './dynamic-test.component';
 @NgModule({
     imports: [CommonModule],
     declarations: [
-        // DialogComponent,
         // InsertionDirective
         DynamicTestComponent
     ],
     entryComponents: [
-        // DialogComponent
+        DynamicTestComponent
     ]
 })
 export class DynamicTestModule {}

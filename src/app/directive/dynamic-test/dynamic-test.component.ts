@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ComponentRef, ComponentFactoryResolver, ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector: 'app-dynamic-test',
@@ -33,16 +33,30 @@ import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
         `
     ]
 })
-export class DynamicTestComponent implements OnInit, OnDestroy, AfterViewInit {
+export class DynamicTestComponent implements OnDestroy, AfterViewInit {
 
-    constructor() {}
+    componentRef: ComponentRef<any>;
 
-    ngOnInit() {}
+    constructor(private componentFactoryResolver: ComponentFactoryResolver, private cd: ChangeDetectorRef) {}
 
-    ngOnDestroy(): void {
+    ngAfterViewInit() {
+        this.cd.detectChanges();
     }
 
-    ngAfterViewInit(): void {
+    onOverlayClicked(evt: MouseEvent) {
+        // this.dialogRef.close();
     }
+
+    onDialogClicked(evt: MouseEvent) {
+        evt.stopPropagation();
+    }
+
+    ngOnDestroy() {
+        if (this.componentRef) {
+            this.componentRef.destroy();
+        }
+    }
+
+    close() {}
 
 }

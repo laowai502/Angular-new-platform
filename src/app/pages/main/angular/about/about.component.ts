@@ -1,46 +1,57 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 
-import { filter } from 'rxjs/operators';
+import { filter, windowWhen } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+    selector: 'app-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.scss']
 })
-export class AboutComponent implements OnInit, OnDestroy {
+export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
 
-  data: any = 'string';
-  myDestory: any;
+    data: any = 'string';
+    myDestory: any;
 
-  public testTemplete: string;
+    public testTemplete: string;
 
-  isShow = 'show';
+    isShow = 'show';
 
-  constructor(
-    private router: Router
-  ) {
-    this.myDestory = router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      this.isShow = event.url.indexOf('about_one') !== -1 ? 'hidden' : 'show';
-    });
-  }
+    constructor(
+        private router: Router
+    ) {
+        this.myDestory = router.events.pipe(
+            filter(event => event instanceof NavigationEnd)
+        ).subscribe((event: NavigationEnd) => {
+            this.isShow = event.url.indexOf('about_one') !== -1 ? 'hidden' : 'show';
+        });
+    }
 
-  ngOnInit() {
-    this.testTemplete = 'No build';
-  }
+    ngOnInit() {
+        this.testTemplete = 'No build';
+    }
 
-  ngOnDestroy() {
-      this.myDestory.unsubscribe();
-  }
+    ngOnDestroy() {
+        this.myDestory.unsubscribe();
+    }
 
-  toChild() {
-    this.router.navigate(['/pages/about/about_one', '1']);
-  }
+    ngAfterViewInit() {}
 
-  toLogin() {
-    this.router.navigate(['/login']);
-  }
+    toChild() {
+        this.router.navigate(['/pages/about/about_one', '1']);
+    }
+
+    toLogin() {
+        this.router.navigate(['/login']);
+    }
+
+    nativeHref() {
+        const newState = {
+            url: window.location.origin + '/login',
+            title: document.title,
+            state: 'login'
+        };
+        window.history.pushState(newState, '', '/login');
+    }
 
 }

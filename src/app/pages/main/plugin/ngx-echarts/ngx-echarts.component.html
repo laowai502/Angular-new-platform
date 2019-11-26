@@ -8,7 +8,7 @@
                 <a href="https://github.com/xieziyu/ngx-echarts">https://github.com/xieziyu/ngx-echarts</a>
             </p>
         </article>
-        <button class="mt16" pButton type="button" (mouseleave)="changeWidth($event)" label="Change Width"></button>
+        <button class="mt16" pButton type="button" (click)="changeWidth($event)" label="Change Width"></button>
     </div>
     <div [ngStyle]="{'width': width}">
         <app-test-char-one></app-test-char-one>
