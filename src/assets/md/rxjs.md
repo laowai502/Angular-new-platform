@@ -176,7 +176,7 @@ Iterator接口部署在对象的Symbol.Iterator属性上, 可以调用这个属�
 
 ### 关于资源回收，如何在angular里面优雅的取消订阅
 
-&#x2003;对于一些angular自带的全局Observable，Router.events， 高级别作用域的EventEmitter(同级组件，或者跨度很大的，简言之非父子组件)，HttpClient等在路由组件之间使用时需要手动进行回收，否则会造成内存泄漏，就好比c#中存在堆内存的变量
+&#x2003;对于一些angular自带的全局Observable，Router.events， 高级别作用域的EventEmitter(同级组件，或者跨度很大的，简言之非父子组件)，HttpClient返回的Observable等在组件切换时需要手动对资源（订阅）进行回收，否则会造成内存泄漏
 
 <br>
 
@@ -188,16 +188,43 @@ Iterator接口部署在对象的Symbol.Iterator属性上, 可以调用这个属�
     constructor(
         private router: Router
     ) {
+        // good
         this.myDestory = router.events.pipe(
-        filter(event => event instanceof NavigationEnd)
+            filter(event => event instanceof NavigationEnd)
         ).subscribe((event: NavigationEnd) => {
             //todo
+            console.log(1);
+        });
+        // error
+        router.events.pipe(
+            filter(event => event instanceof NavigationEnd)
+        ).subscribe((event: NavigationEnd) => {
+            //todo
+            console.log(2);
         });
     }
     ngOnDestroy() {
         this.myDestory.unsubscribe();
     }
+    // 下面没有赋值的每次进入都会 打印2
     ...
+    // 批处理
+    import { Observable, Subject } from 'rxjs';
+
+    const subject = new Subject();
+
+    const observer1 = new Observer('one');
+    const observer2 = new Observer('two');
+    const observer3 = new Observer('three');
+
+    subject.addObserver(observer1);
+    subject.addObserver(observer2);
+    subject.addObserver(observer3);
+
+    ngOnDestroy() {
+        this.subject.unsubscribe();
+    }
+    // todo
 ```
 
 <br>
