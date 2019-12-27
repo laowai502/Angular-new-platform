@@ -8,8 +8,14 @@ import { ChildsComponent } from './component/component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 // External plugins
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { PanelModule } from 'primeng/panel';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
 
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxEchartsModule } from 'ngx-echarts';
@@ -26,6 +32,12 @@ import { NgxEchartsModule } from 'ngx-echarts';
         PagesRoutingModule,
         HttpClientModule,
         PanelMenuModule,
+        MessageModule,
+        MessagesModule,
+        DropdownModule,
+        InputTextModule,
+        InputTextareaModule,
+        PanelModule,
         ButtonModule,
         MarkdownModule.forRoot({
             loader: HttpClient // optional, only if you use [src] attribute

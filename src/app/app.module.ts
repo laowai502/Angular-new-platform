@@ -6,6 +6,12 @@ import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 
+import { httpInterceptorProviders } from '../app/common/http/index';
+
+// primeNg Module
+import { MessageService } from 'primeng/components/common/messageservice';
+import { ToastModule } from 'primeng/toast';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 
@@ -18,10 +24,14 @@ import { LoginComponent } from './pages/login/login.component';
     BrowserModule,
     CommonModule,
     BrowserAnimationsModule,
+    ToastModule,
     AppRoutingModule
   ],
   exports: [],
-  providers: [],
+  providers: [
+    MessageService,
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
