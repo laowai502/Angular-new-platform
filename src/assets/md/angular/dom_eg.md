@@ -13,7 +13,7 @@
 
 #### @viewChild()
 
-&#x2003;&#x2003;可以通过ViewChild这个装饰器获取视图元素中的内容，获取子组件或者子元素，如下是查询方式
+&#x2003;&#x2003;可以通过ViewChild这个装饰器获取视图元素中的内容，获取子组件或者子元素，(@viewChildren QueryList) 如下是查询方式
 
 <br>
 
@@ -85,3 +85,11 @@ abstract class Renderer2 {
     abstract listen(target: any, eventName: string, callback: (event: any) => boolean | void): () => void
 }
 ```
+
+<br>
+
+#### ng-content @ContentChild, @ContentChildren, AfterContentInit, AfterContentChecked
+
+&#x2003;&#x2003; ng-content 组件的外部投射, 等价于 node.appendChild(el) 或 jQuery 中的 $(node).append(el), 所以通过特定的生命周期对其操作, 对ng-content的内容进行选择做dom挫折, 需要使用@ContentChild, @ContentChildren类修饰符来获取
+
+<br>

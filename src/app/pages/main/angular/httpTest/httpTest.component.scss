@@ -1,0 +1,20 @@
+.one-wrapper {
+    width: 500px;
+    height: 200px;
+    background: #FF00FF;
+    transition: .2s;
+    line-height: 200px;
+    text-align: center;
+}
+
+.only-class {
+    width: 100%;
+}
+
+.new-class {
+    background: #FFD700;
+}
+
+.active {
+    opacity: .5;
+}

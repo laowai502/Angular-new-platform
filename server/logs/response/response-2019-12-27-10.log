@@ -1,0 +1,2 @@
+[2019-12-27T10:21:03.470] [INFO] http - {"responseTime":"响应时间为0.012s","method":"GET","url":"/api/middleware/getTestList","host":"localhost:3010"}
+[2019-12-27T10:21:03.546] [ERROR] http - {"responseTime":"响应时间为0.006s","method":"GET","url":"/favicon.ico","host":"localhost:3010"}

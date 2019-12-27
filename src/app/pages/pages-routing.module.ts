@@ -14,6 +14,7 @@ import { DiffLoadingComponent } from './main/angular/diff-loading/diff-loading.c
 import { PagesComponent } from './pages.component';
 
 import { DomComponent } from './main/angular/dom/dom.component';
+import { HttpTestComponent } from './main/angular/httpTest/httpTest.component';
 import { DomChildComponent } from './main/angular/dom/domChild';
 
 import { AboutOne } from './main/angular/about/about_one/about_one';
@@ -40,6 +41,7 @@ export const Components = [
 
     DomComponent,
     DomChildComponent,
+    HttpTestComponent
 ];
 
 const routes: Routes = [
@@ -54,6 +56,10 @@ const routes: Routes = [
             {
                 path: 'angular/dom',
                 component: DomComponent
+            },
+            {
+                path: 'angular/style-syntax',
+                component: HttpTestComponent
             },
             {
                 path: 'news',

@@ -31,7 +31,7 @@ app
 	// .use(logger())
 	.use(compress({ threshold: 2048 }))
     .use(bodyParser())
-    .use(CryptoUrl)
+    // .use(CryptoUrl)
     .use(helmet())
     .use(respond())
     .use(router.routes())

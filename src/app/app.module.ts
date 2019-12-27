@@ -8,6 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { httpInterceptorProviders } from '../app/common/http/index';
 
+import { HttpClientModule } from '@angular/common/http';
+
 // primeNg Module
 import { MessageService } from 'primeng/components/common/messageservice';
 import { ToastModule } from 'primeng/toast';
@@ -25,7 +27,8 @@ import { LoginComponent } from './pages/login/login.component';
     CommonModule,
     BrowserAnimationsModule,
     ToastModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   exports: [],
   providers: [

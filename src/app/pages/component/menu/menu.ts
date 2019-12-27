@@ -38,18 +38,25 @@ export class Menu implements OnInit, OnDestroy {
                             this.router.navigate(['/pages/about']);
                         }
                     },
-                    { // angular8 different loading
-                        label: 'Different Loading',
-                        icon: 'pi pi-star-o',
-                        command: () => {
-                            this.router.navigate(['/pages/angular/diff-loading']);
-                        }
-                    },
+                    // { // angular8 different loading
+                    //     label: 'Different Loading',
+                    //     icon: 'pi pi-star-o',
+                    //     command: () => {
+                    //         this.router.navigate(['/pages/angular/diff-loading']);
+                    //     }
+                    // },
                     { // dom operate in angular
                         label: 'Dom',
                         icon: 'pi pi-star-o',
                         command: () => {
                             this.router.navigate(['/pages/angular/dom']);
+                        }
+                    },
+                    { // dom operate in angular
+                        label: 'Style-syntax',
+                        icon: 'pi pi-star-o',
+                        command: () => {
+                            this.router.navigate(['/pages/angular/style-syntax']);
                         }
                     }
                 ]

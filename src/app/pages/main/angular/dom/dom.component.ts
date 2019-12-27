@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ViewContainerRef, ComponentRef, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ViewContainerRef, ComponentRef, ElementRef, Renderer2} from '@angular/core';
 
 import $ from 'jquery';
 
@@ -40,6 +40,8 @@ export class DomComponent implements OnInit, AfterViewInit {
 
     treeData: any;
 
+    fatherString = '组件变量';
+
     @ViewChild('AngularDom', { static: false }) AngularDom: ElementRef;
     @ViewChild(DomChildComponent, { static: false }) DomChild: DomChildComponent;
 
@@ -50,7 +52,7 @@ export class DomComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.treeData = this.treeDataParse(mockData, 0);
-        console.log(this.el);
+        // console.log(this.el);
         // debugger;
     }
 
