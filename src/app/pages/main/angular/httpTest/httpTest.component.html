@@ -10,5 +10,12 @@
     <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
         <markdown class="variable-binding" [data]="md1"></markdown>
     </div>
-    <div class="one-wrapper" [class]="onlyClass" [class.new-class]="newClasee" [ngClass]="{'active': isActive}">angular class template syntax collections</div>
-</section>
+    <div [mySpinners]="toggle" class="one-wrapper" [class]="onlyClass" [class.new-class]="newClasee" [ngClass]="{'active': isActive}">angular class template syntax collections</div>
+
+    <div class="p16">
+        <!-- <p>I have a pen, and the total is <b [mySpinners]="toggle">100</b></p> -->
+    </div>
+    <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
+        <button pButton type="button" class="mr12" (click)="test()" label="test"></button>
+    </div>
+</section>      

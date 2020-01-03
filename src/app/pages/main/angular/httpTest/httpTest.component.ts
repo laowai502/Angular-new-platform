@@ -67,12 +67,18 @@ export class HttpTestComponent implements OnInit {
 
   isActive = true;
 
+  toggle = false;
+
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {}
 
   ChangeWidth() {
     this.width = this.width === 500 ? 800 : 500;
+  }
+
+  test() {
+    this.toggle = !this.toggle;
   }
 
 }

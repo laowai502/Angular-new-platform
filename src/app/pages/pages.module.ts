@@ -7,6 +7,9 @@ import { ChildsComponent } from './component/component';
 
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
+// My
+import { DirectiveModule } from '../directive/directive.module';
+
 // External plugins
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
@@ -31,6 +34,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
         CommonModule,
         PagesRoutingModule,
         HttpClientModule,
+        DirectiveModule,
+
         PanelMenuModule,
         MessageModule,
         MessagesModule,
