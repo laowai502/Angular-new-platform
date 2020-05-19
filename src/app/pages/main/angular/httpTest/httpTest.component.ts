@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/api';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'app-http-test',
   templateUrl: './httpTest.component.html',
@@ -78,7 +80,21 @@ export class HttpTestComponent implements OnInit {
   }
 
   test() {
-    this.toggle = !this.toggle;
+    // this.toggle = !this.toggle;
+    const arr = [
+        { key: '5D002.c.1', value: '1' },
+        { key: 'EAR99', value: '1' },
+        { key: '3A992', value: '1' },
+        { key: 'TBD', value: '1' },
+        { key: '5D002', value: '1' },
+        { key: '3A991.b.1.a', value: '1' },
+        { key: '5A002', value: '1' },
+        { key: '5D992.c', value: '2'},
+        { key: 'Decontrolled', value: '2'},
+        { key: '5A002.a.3', value: '2'}
+    ];
+    console.log(_.sortBy(arr, e => e.key));
+    // console.log(arr);
   }
 
 }
