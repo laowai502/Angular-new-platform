@@ -78,7 +78,28 @@ export class StyleSyntaxComponent implements OnInit {
 
   ChangeWidth() {
     this.width = this.width === 500 ? 800 : 500;
+<<<<<<< HEAD:src/app/pages/main/angular/style-syntax/styleSyntax.component.ts
     this.height = this.height === 120 ? 200 : 120;
+=======
+  }
+
+  test() {
+    // this.toggle = !this.toggle;
+    const arr = [
+        { key: '5D002.c.1', value: '1' },
+        { key: 'EAR99', value: '1' },
+        { key: '3A992', value: '1' },
+        { key: 'TBD', value: '1' },
+        { key: '5D002', value: '1' },
+        { key: '3A991.b.1.a', value: '1' },
+        { key: '5A002', value: '1' },
+        { key: '5D992.c', value: '2'},
+        { key: 'Decontrolled', value: '2'},
+        { key: '5A002.a.3', value: '2'}
+    ];
+    console.log(_.sortBy(arr, e => e.key));
+    // console.log(arr);
+>>>>>>> refs/remotes/origin/dev:src/app/pages/main/angular/httpTest/httpTest.component.ts
   }
 
 }
