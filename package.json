@@ -76,6 +76,7 @@
             "karma-jasmine": "~2.0.1",
             "karma-jasmine-html-reporter": "^1.4.0",
             "koa-logger": "^3.2.0",
+            "mssql": "^6.0.1",
             "mysql": "^2.16.0",
             "nodemon": "^1.18.9",
             "protractor": "~5.4.0",
