@@ -18,23 +18,23 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    ToastModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
-  exports: [],
-  providers: [
-    MessageService,
-    httpInterceptorProviders
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent
+    ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        ToastModule,
+        AppRoutingModule,
+        HttpClientModule
+    ],
+    exports: [],
+    providers: [
+        MessageService,
+        httpInterceptorProviders
+    ],
+    bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

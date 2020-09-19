@@ -7,16 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-    // md = `
-    //     ### laowai
-    // `;
-
-    str = 'test string';
-    // str = '123<br>123<br>132';
-
-    constructor() {
-        this.str = this.str.replace(/<br>/g, '\n');
-    }
+    constructor() {}
 
     ngOnInit() {}
 

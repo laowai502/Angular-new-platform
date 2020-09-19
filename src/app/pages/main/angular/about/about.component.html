@@ -1,15 +1,12 @@
 <section class="main-pages-content"> 
     <div class="father-area" [class]="isShow">
-        <p class="p10">about works! {{ testTemplete }}</p>
+        <p class="p10">路由层级展示，路由嵌套，子路由覆盖父级路由方式，以及父子路由同时带参数展示</p>
         <div class="p10">
             <button (click)="toChild()">To child page</button>
         </div>
-        <div class="block p10">
+        <!-- <div class="block p10">
             <button (click)="toLogin()">To login page</button>
-        </div>
-        <div class="block p10">
-            <button (click)="nativeHref()">To login page</button>
-        </div>
+        </div> -->
     </div>
     <router-outlet></router-outlet>
 </section>

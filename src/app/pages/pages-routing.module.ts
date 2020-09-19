@@ -1,36 +1,29 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './main/home/home.component';
-import { NewsComponent } from './main/news/news.component';
 import { AboutComponent } from './main/angular/about/about.component';
-import { DisplayComponent } from './main/display/display.component';
-
-import { NgxEchartsComponent } from './main/plugin/ngx-echarts/ngx-echarts.component';
-import { AngularBusyComponent } from './main/plugin/angular-busy/angular-busy.component';
-
-import { DiffLoadingComponent } from './main/angular/diff-loading/diff-loading.component';
-
-import { PagesComponent } from './pages.component';
-
-import { DomComponent } from './main/angular/dom/dom.component';
-import { HttpTestComponent } from './main/angular/httpTest/httpTest.component';
-import { DomChildComponent } from './main/angular/dom/domChild';
-
 import { AboutOne } from './main/angular/about/about_one/about_one';
 import { About_One_Child } from './main/angular/about/about_one/about_one_one/about_one_one';
 import { CharOne } from './main/plugin/ngx-echarts/component/charOne';
 import { CharTwo } from './main/plugin/ngx-echarts/component/charTwo';
+import { DomComponent } from './main/angular/dom/dom.component';
+import { DomChildComponent } from './main/angular/dom/domChild';
+import { AngularBusyComponent } from './main/angular/angular-busy/angular-busy.component';
+import { StyleSyntaxComponent } from './main/angular/style-syntax/styleSyntax.component';
+
+import { HomeComponent } from './main/home/home.component';
+import { NgxEchartsComponent } from './main/plugin/ngx-echarts/ngx-echarts.component';
+
+import { PagesComponent } from './pages.component';
+
 
 export const Components = [
     HomeComponent,
-    NewsComponent,
     AboutComponent,
-    DisplayComponent,
+    StyleSyntaxComponent,
     // angular-plugin
     NgxEchartsComponent,
     AngularBusyComponent,
-    DiffLoadingComponent,
     // router-outlet
     PagesComponent,
     // child
@@ -38,10 +31,8 @@ export const Components = [
     About_One_Child,
     CharOne,
     CharTwo,
-
     DomComponent,
-    DomChildComponent,
-    HttpTestComponent
+    DomChildComponent
 ];
 
 const routes: Routes = [
@@ -49,23 +40,7 @@ const routes: Routes = [
         path: '',
         component: PagesComponent,
         children: [
-            {
-                path: 'angular/diff-loading',
-                component: DiffLoadingComponent
-            },
-            {
-                path: 'angular/dom',
-                component: DomComponent
-            },
-            {
-                path: 'angular/style-syntax',
-                component: HttpTestComponent
-            },
-            {
-                path: 'news',
-                component: NewsComponent
-            },
-            {
+            { // route param 相关
                 path: 'about',
                 component: AboutComponent,
                 children: [
@@ -81,25 +56,25 @@ const routes: Routes = [
                     }
                 ]
             },
+            { // rxjs page
+                path: 'angular/angular-busy',
+                component: AngularBusyComponent
+            },
             {
+                path: 'angular/dom',
+                component: DomComponent
+            },
+            {
+                path: 'angular/style-syntax',
+                component: StyleSyntaxComponent
+            },
+            { // echarts
                 path: 'plugin/ngx-echarts',
                 component: NgxEchartsComponent
             },
-            {
-                path: 'plugin/angular-busy',
-                component: AngularBusyComponent
-            },
-            // {
-            //     path: 'es6/array-buffer',
-            //     component: ArrayBufferComponent
-            // },
-            {
+            { // markdown
                 path: 'home',
                 component: HomeComponent
-            },
-            {
-                path: 'display',
-                component: DisplayComponent
             },
             {
                 path: '**',

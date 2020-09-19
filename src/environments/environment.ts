@@ -3,10 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  hmr: false,
-  apiUrl: 'http://localhost:4201',
-  middleApiUrl: 'http://localhost:3010/api/middleware'
+    production: false,
+    hmr: false,
+    apiUrl: 'http://localhost:4201',
+    middleApiUrl: 'http://localhost:3010/api/middleware'
 };
 
 /*

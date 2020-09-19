@@ -13,8 +13,6 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
     data: any = 'string';
     myDestory: any;
 
-    public testTemplete: string;
-
     isShow = 'show';
 
     constructor(
@@ -27,9 +25,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
         });
     }
 
-    ngOnInit() {
-        this.testTemplete = 'No build';
-    }
+    ngOnInit() {}
 
     ngOnDestroy() {
         this.myDestory.unsubscribe();
@@ -43,15 +39,6 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
 
     toLogin() {
         this.router.navigate(['/login']);
-    }
-
-    nativeHref() {
-        const newState = {
-            url: window.location.origin + '/login',
-            title: document.title,
-            state: 'login'
-        };
-        window.history.pushState(newState, '', '/login');
     }
 
 }

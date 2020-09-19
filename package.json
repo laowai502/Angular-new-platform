@@ -29,7 +29,6 @@
             "echarts": "^4.3.0",
             "jquery": "^3.4.1",
             "lodash": "^4.17.15",
-            "materialize-css": "^1.0.0",
             "ngx-echarts": "^4.2.1",
             "ngx-markdown": "^8.1.0",
             "primeicons": "^2.0.0",

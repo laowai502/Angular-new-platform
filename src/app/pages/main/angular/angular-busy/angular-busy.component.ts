@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-angular-busy',
     templateUrl: './angular-busy.component.html',
-    styleUrls: ['./angular-busy.component.scss']
+    styleUrls: ['./angular-busy.component.scss', '../../../../themes/markdown.scss']
 })
 export class AngularBusyComponent implements OnInit {
 

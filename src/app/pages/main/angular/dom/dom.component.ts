@@ -4,7 +4,7 @@ import $ from 'jquery';
 
 import { DomChildComponent } from './domChild';
 
-import { slideDown, slideUp } from '../../../../util';
+import { slideDown, slideUp } from '../../../../common/util/slide';
 
 const mockData = [
     { id: 1, pId: 0, name: 'group-1', hasChild: true, isOpen: true },

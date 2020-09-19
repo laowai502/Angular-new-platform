@@ -38,13 +38,13 @@ export class Menu implements OnInit, OnDestroy {
                             this.router.navigate(['/pages/about']);
                         }
                     },
-                    // { // angular8 different loading
-                    //     label: 'Different Loading',
-                    //     icon: 'pi pi-star-o',
-                    //     command: () => {
-                    //         this.router.navigate(['/pages/angular/diff-loading']);
-                    //     }
-                    // },
+                    {
+                        label: 'Angular-Rxjs',
+                        icon: 'pi pi-star-o',
+                        command: () => {
+                            this.router.navigate(['/pages/angular/angular-busy']);
+                        }
+                    },
                     { // dom operate in angular
                         label: 'Dom',
                         icon: 'pi pi-star-o',
@@ -72,10 +72,10 @@ export class Menu implements OnInit, OnDestroy {
                         }
                     },
                     {
-                        label: 'Angular-busy',
+                        label: 'Ng-markdown',
                         icon: 'pi pi-star-o',
                         command: () => {
-                            this.router.navigate(['/pages/plugin/angular-busy']);
+                            this.router.navigate(['/pages/home']);
                         }
                     }
                 ]

@@ -15,6 +15,7 @@
 <br>
 
 ``` typescript
+// ts 代码
 var observable = Rx.Observable.create(function (observer) {
 observer.next(1);
 observer.next(2);
@@ -37,6 +38,7 @@ console.log('just after subscribe');
 <br>
 
 ```html
+    // html
     <p>This is a paragraph</p>
     <p>This is another paragraph</p>
     <p>This is a paragraph</p>
