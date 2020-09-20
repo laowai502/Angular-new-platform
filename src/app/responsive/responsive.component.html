@@ -1,0 +1,411 @@
+<div class="wrapper">
+    <!-- Sidebar  -->
+    <div class="iq-sidebar" [class.show-res-sidebar]="showResSidebar">
+        <!-- logo -->
+        <div class="iq-sidebar-logo d-flex justify-content-between">
+            <a href="javascript:void(0)">
+                <img src="./assets/images/logo.gif" class="img-fluid" alt="">
+                <span>Vito</span>
+            </a>
+            <div class="iq-menu-bt-sidebar">
+                <div class="iq-menu-bt align-self-center">
+                    <div class="wrapper-menu">
+                        <div class="main-circle"><i class="ri-arrow-left-s-line"></i></div>
+                        <div class="hover-circle"><i class="ri-arrow-right-s-line"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- menu -->
+        <div id="sidebar-scrollbar">
+            <nav class="iq-sidebar-menu">
+                <ul class="iq-menu">
+                    <li class="iq-menu-title">
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="active">
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-home"></i>
+                            <span>Dashboard View</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-h-square"></i>
+                            <span>Dashboard square</span>
+                        </a>
+                    </li>
+                    <li class="iq-menu-title">
+                        <span>Apps</span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-dribbble"></i>
+                            <span>Prime NG</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-bars"></i>
+                            <span>Ngx-bootstrap</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-cube"></i>
+                            <span>material desgin ui</span>
+                        </a>
+                    </li>
+                    <li class="iq-menu-title">
+                        <span>Pages</span>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-dribbble"></i>
+                            <span>Login</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-bars"></i>
+                            <span>Register</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="iq-waves-effect">
+                            <i class="fa fa-cube"></i>
+                            <span>Reset Password</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- TOP Nav Bar -->
+    <div class="iq-top-navbar" [class.fixed-header]="fixTop">
+        <div class="iq-navbar-custom">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <div class="iq-search-bar">
+                    <div class="searchbox">
+                        <input type="text" class="text search-input" placeholder="Type here to search...">
+                        <a class="search-link" href="javascript:void(0)"><i class="fa fa-search"></i></a>
+                    </div>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-list"></i>
+                </button>
+                <div class="iq-menu-bt align-self-center">
+                    <div class="wrapper-menu" (click)="showResSidebar = !showResSidebar">
+                        <div class="main-circle"><i class="fa fa-arrow-left"></i></div>
+                        <div class="hover-circle"><i class="fa fa-arrow-right"></i></div>
+                    </div>
+                </div>
+
+                <!-- -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto navbar-list">
+                        <li class="nav-item">
+                            <a class="search-toggle iq-waves-effect language-title" href="javascript:void(0)">
+                                <img src="./assets/images/small/flag-05.png" alt="img-flaf" class="img-fluid mr-1"
+                                    style="height: 16px; width: 16px;" />
+                                Deutschlands
+                                <i class="fa fa-sort-desc"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="search-toggle iq-waves-effect" href="javascript:void(0)">
+                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="javascript:void(0)" class="search-toggle iq-waves-effect">
+                                <div id="lottie-beil">
+                                    <i class="fa fa-bell-o"></i>
+                                </div>
+                                <span class="bg-danger dots"></span>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="javascript:void(0)" class="search-toggle iq-waves-effect">
+                                <div id="lottie-mail">
+                                    <i class="fa fa-envelope-o"></i>
+                                </div>
+                                <span class="bg-primary dots" style="background-color: #827af3 !important;"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="navbar-list">
+                    <li>
+                        <a href="javascript:void(0)"
+                            class="search-toggle iq-waves-effect d-flex align-items-center">
+                            <img src="./assets/images/user/1.jpg" class="img-fluid rounded mr-3" alt="user">
+                            <div class="caption">
+                                <h6 class="mb-0 line-height">Nik jone</h6>
+                                <span class="font12">Available</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+    </div>
+
+    <!-- Page Content  -->
+    <div id="content-page" class="content-page">
+        <div class="container-fluid">
+            <!-- row-one -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="iq-card">
+                        <div class="iq-card-body">
+                            <echarts [options]="options" (chartInit)="onChartInit($event)" [autoResize]="true"
+                                class="charts-layout"></echarts>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="iq-card">
+                        <div class="iq-card-body calendar-content" style="height: 390px;">
+                            <p-calendar [(ngModel)]="date" [inline]="true"></p-calendar>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="iq-card">
+                        <div class="iq-card-body">
+                            <div class="text-center"><span style="color: #a09e9e;">AVG Impressions</span></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="value-box">
+                                    <h2 class="mb-0"><span class="counter">2.648</span></h2>
+                                    <p class="mb-0 text-secondary line-height"> 26.84% </p>
+                                </div>
+                                <div class="iq-iconbox iq-bg-danger">
+                                    <i class="fa fa-arrow-down"></i>
+                                </div>
+                            </div>
+                            <div class="iq-progress-bar mt-5">
+                                <span class="bg-danger" style="width: 80%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="iq-card">
+                        <div class="iq-card-body">
+                            <div class="text-center"><span style="color: #a09e9e;">AVG Engagements Rate</span></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="value-box">
+                                    <h2 class="mb-0"><span class="counter">89.6</span></h2>
+                                    <p class="mb-0 pl-2 text-secondary line-height"> 8.64% </p>
+                                </div>
+                                <div class="iq-iconbox iq-bg-info">
+                                    <i class="fa fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="iq-progress-bar mt-5">
+                                <span class="bg-info" style="width: 50%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="iq-card">
+                        <div class="iq-card-body">
+                            <div class="text-center"><span style="color: #a09e9e;">AVG Reach</span></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="value-box">
+                                    <h2 class="mb-0"><span class="counter">826</span></h2>
+                                    <p class="mb-0 pl-2 text-secondary line-height"> 0.86% </p>
+                                </div>
+                                <div class="iq-iconbox iq-bg-success">
+                                    <i class="fa fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="iq-progress-bar mt-5">
+                                <span class="bg-success" style="width: 66%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="iq-card">
+                        <div class="iq-card-body">
+                            <div class="text-center"><span style="color: #a09e9e;">AVG Transport</span></div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="value-box">
+                                    <h2 class="mb-0"><span class="counter">7.55</span></h2>
+                                    <p class="mb-0 pl-2 text-secondary line-height"> 25.5% </p>
+                                </div>
+                                <div class="iq-iconbox iq-bg-primary">
+                                    <i class="fa fa-arrow-up"></i>
+                                </div>
+                            </div>
+                            <div class="iq-progress-bar mt-5">
+                                <span class="bg-primary" style="width: 70%;"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- row-two -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Frequent Post List</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <app-responsive-table></app-responsive-table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 col-lg-4">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Post Summary</h4>
+                            </div>
+                            <div class="iq-card-header-toolbar d-flex align-items-center">
+                                <div>
+                                    <span class="text-primary">
+                                        <i class="fa fa-ellipsis-h" style="color: #393C53"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <p class="mb-0" style="color: #a09e9e;">Total of Likes $ Comments</p>
+                            <div class="m-0 p-0 d-flex flex-wrap align-items-center justify-content-between">
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center  mt-4">
+                                        <div class="iq-scale-border mr-3 like-block"></div>
+                                        <div class="iq-scale-content">
+                                            <h6>2.864</h6>
+                                            <p class="mb-0">Likes</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center  mt-4">
+                                        <div class="iq-scale-border mr-3 comment-block"></div>
+                                        <div class="iq-scale-content">
+                                            <h6>624</h6>
+                                            <p class="mb-0">Comments</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mt-4">
+                                        <div class="iq-scale-border mr-3 share-block"></div>
+                                        <div class="iq-scale-content">
+                                            <h6>1.75</h6>
+                                            <p class="mb-0">Share</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mt-4">
+                                        <div class="iq-scale-border mr-3 repost-block"></div>
+                                        <div class="iq-scale-content">
+                                            <h6>345</h6>
+                                            <p class="mb-0">Repost</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mt-4">
+                                        <div class="iq-scale-border mr-3 view-block"></div>
+                                        <div class="iq-scale-content">
+                                            <h6>845</h6>
+                                            <p class="mb-0">Views</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex align-items-center mt-4">
+                                        <div class="iq-scale-border mr-3 post-block"></div>
+                                        <div class="iq-scale-content">
+                                            <h6>1200</h6>
+                                            <p class="mb-0">Posts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- row-three -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Time line</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <app-responsive-timeline></app-responsive-timeline>
+                        </div>
+                    </div>
+                 </div>
+                <div class="col-lg-6">
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">Contextual variations</h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body badge-content">
+                            <p>Add any of the below mentioned modifier classes to change the appearance of a badge.</p>
+                            <span class="badge border border-primary text-primary">Primary</span>
+                            <span class="badge border border-secondary text-secondary">Secondary</span>
+                            <span class="badge border border-success text-success">Success</span>
+                            <span class="badge border border-danger text-danger">Danger</span>
+                            <span class="badge border border-warning text-warning">Warning</span>
+                            <span class="badge border border-info text-info">Info</span>
+                            <span class="badge border border-light text-light">Light</span>
+                            <span class="badge border border-dark text-dark">Dark</span>
+                            <h5 class="card-title mt-4">Pill badges</h5>
+                            <p>Use the <code>.badge-pill</code> modifier class to make badges more rounded (with a larger <code>border-radius</code> and additional horizontal <code>padding</code>). Useful if you miss the badges from v3.</p>
+                            <span class="badge badge-pill border border-primary text-primary">Primary</span>
+                            <span class="badge badge-pill border border-secondary text-secondary">Secondary</span>
+                            <span class="badge badge-pill border border-success text-success">Success</span>
+                            <span class="badge badge-pill border border-danger text-danger">Danger</span>
+                            <span class="badge badge-pill border border-warning text-warning">Warning</span>
+                            <span class="badge badge-pill border border-info text-info">Info</span>
+                            <span class="badge badge-pill border border-light text-light">Light</span>
+                            <span class="badge badge-pill border border-dark text-dark">Dark</span>
+                            <h5 class="card-title mt-4">Links</h5>
+                            <p>Using the contextual <code>.badge-*</code> classes on an <code>&lt;a&gt;</code> element quickly provide <em>actionable</em> badges with hover and focus states.</p>
+                            <a href="#" class="badge border border-primary text-primary">Primary</a>
+                            <a href="#" class="badge border border-secondary text-secondary">Secondary</a>
+                            <a href="#" class="badge border border-success text-success">Success</a>
+                            <a href="#" class="badge border border-danger text-danger">Danger</a>
+                            <a href="#" class="badge border border-warning text-warning">Warning</a>
+                            <a href="#" class="badge border border-info text-info">Info</a>
+                            <a href="#" class="badge border border-light text-light">Light</a>
+                            <a href="#" class="badge border border-dark text-dark">Dark</a>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-white iq-footer">
+
+</footer>

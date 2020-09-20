@@ -1,0 +1,107 @@
+@import './varible.scss';
+
+*::-moz-selection { background: $theme-color; color: #ffffff; text-shadow: none; }
+::-moz-selection { background: $theme-color; color: #ffffff; text-shadow: none; }
+::selection { background: $theme-color; color: #ffffff; text-shadow: none; }
+
+// body {
+//     background: #efeefd !important;
+// }
+
+a, button, input, btn {
+    outline: medium none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Muli', sans-serif;
+    font-weight: 400;
+    margin: 0px;
+    line-height: 1.5;
+    color: #3f414d;
+}
+
+.line-height {
+    line-height: normal;
+}
+
+
+/*-----------------Text Color-------------------------------*/
+.text-primary {
+    color: #827af3 !important;
+}
+.text-secondary {
+    color: #a09e9e !important;
+}
+.text-success {
+    color: #27b345 !important;
+}
+.text-danger {
+    color: #f14336 !important;
+}
+.text-warning {
+    color: #fbc647 !important;
+}
+.text-info {
+    color: #6ce6f4 !important;
+}
+.text-light {
+    color: #E9EDF4 !important;
+}
+.text-dark {
+    color: #3f414d !important;
+}
+.text-white {
+    color: #ffffff !important;
+}
+.text-secondary {
+    color: #a09e9e !important;
+}
+
+.iq-bg-danger {
+    background: #fff5f4 !important;
+    color: #f14336 !important;
+}
+
+.iq-bg-info {
+    background: #e5fafc !important;
+    color: #6ce6f4 !important;
+}
+
+.iq-bg-success {
+    background: #eefff2 !important;
+    color: #27b345 !important;
+}
+
+.iq-bg-primary {
+    background: rgba(130, 122, 243, 0.2);
+    background: linear-gradient(to right, rgba(130, 122, 243, 0.2) 0%, rgba(180, 122, 243, 0.2) 100%);
+    color: #827af3 !important;
+}
+
+.iq-card {
+    background: #ffffff;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: none;
+    box-shadow: 0px 0px 12px 0px rgba(120, 146, 141, 0.06);
+    .iq-card-header {
+        padding: 0 20px;
+        min-height: 60px;
+        align-items: center !important;
+        .iq-header-title {
+            display: inline-block;
+            align-self: center !important;
+            .card-title {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .iq-card-body {
+        padding: 20px;
+    }
+}

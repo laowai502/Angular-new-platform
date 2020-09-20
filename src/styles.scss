@@ -1,3 +1,5 @@
+@import '~font-awesome/css/font-awesome.min.css';
+
 /* You can add global styles to this file, and also import other style files */
 html, body {
     margin: 0;
@@ -50,6 +52,10 @@ li {
 
 .block {
     display: block;
+}
+
+.font12 {
+    font-size: 12px;
 }
 
 .lht26 {

@@ -9,6 +9,10 @@ const routes: Routes = [
         loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
     },
     {
+        path: 'responsive',
+        loadChildren: () => import('./responsive/responsive.module').then(m => m.ResponsiveModule)
+    },
+    {
         path: 'login',
         component: LoginComponent
     },

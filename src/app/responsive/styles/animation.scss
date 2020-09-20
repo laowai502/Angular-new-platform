@@ -1,0 +1,10 @@
+.bg-danger, .badge-danger {
+    color: #ffffff;
+    background: rgba(243, 84, 72, 1);
+    background: linear-gradient(to right, rgba(243, 84, 72, 1) 0%, rgba(253, 98, 86, 1) 100%);
+}
+
+@keyframes shadow-pulse-dots {
+    0% { box-shadow: 0 0 0 0px rgba(230, 65, 65, 0.2); }
+    100% { box-shadow: 0 0 0 15px rgba(230, 65, 65, 0); }
+}
