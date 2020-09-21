@@ -17,7 +17,6 @@ export class Menu implements OnInit, OnDestroy {
     // destroyRouter: any;
 
     constructor(
-        // private routeParams: ActivatedRoute,
         private router: Router
     ) {}
 
@@ -81,23 +80,10 @@ export class Menu implements OnInit, OnDestroy {
                 ]
             },
             {
-                label: 'RxJS',
-                items: [
-                    { label: 'New', icon: 'pi pi-plus' },
-                    { label: 'Open', icon: 'pi pi-download' }
-                ]
-            },
-            {
-                label: 'Es6',
-                items: [
-                    {
-                        label: 'ArrayBuffer',
-                        icon: 'pi pi-inbox',
-                        command: () => {
-                            // this.router.navigate(['/pages/es6/array-buffer']);
-                        }
-                    }
-                ]
+                label: 'Responsive Page',
+                command: () => {
+                    this.router.navigate(['/responsive']);
+                }
             }
         ];
     }
