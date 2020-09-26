@@ -13,6 +13,10 @@ const routes: Routes = [
         loadChildren: () => import('./responsive/responsive.module').then(m => m.ResponsiveModule)
     },
     {
+        path: 'gojs',
+        loadChildren: () => import('./go-js/go-js.module').then(m => m.GoJsModule)
+    },
+    {
         path: 'login',
         component: LoginComponent
     },

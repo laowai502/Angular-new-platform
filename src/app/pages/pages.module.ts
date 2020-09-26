@@ -23,6 +23,8 @@ import { MessageModule } from 'primeng/message';
 import { MarkdownModule } from 'ngx-markdown';
 import { NgxEchartsModule } from 'ngx-echarts';
 
+import { HighchartsChartModule } from 'highcharts-angular';
+
 
 @NgModule({
     declarations: [
@@ -47,7 +49,8 @@ import { NgxEchartsModule } from 'ngx-echarts';
         MarkdownModule.forRoot({
             loader: HttpClient // optional, only if you use [src] attribute
         }),
-        NgxEchartsModule
+        NgxEchartsModule,
+        HighchartsChartModule
     ]
 })
 export class PagesModule {}
