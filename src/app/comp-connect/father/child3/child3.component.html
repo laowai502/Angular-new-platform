@@ -1,0 +1,21 @@
+<div class="t-child3">
+    <h3>Child3 component</h3>
+    <p style="margin-top: 10px;">father txt: {{ fTxt }}</p>
+    <p style="margin-top: 10px;">father count: {{ fCount }}</p>
+    <hr>
+    <h5>Test not father-son components</h5>
+    <label>dynamicTxt by service:</label><input style="margin: 10px 0 0 20px;" type="text" [(ngModel)]="dynamicTxt" />
+    <p style="margin-top: 10px;">dynamicTxt: {{ dynamicTxt }}</p>
+    <hr>
+    <label>normalTxt by service:</label><input style="margin: 10px 0 0 20px;" type="text" [(ngModel)]="normalTxt" />
+    <p style="margin-top: 10px;">normalTxt: {{ normalTxt }}</p>
+    <div style="margin: 10px 0;">
+        <button type="button" (click)="getTxtByService()">get</button>
+        <button type="button" (click)="setTxtByService()">set</button>
+    </div>
+    <hr>
+    <p style="margin-top: 10px;">connectTxt: {{ connectTxt }}</p>
+    <div style="margin: 10px 0;">
+        <button type="button" (click)="connect()">非父子组件交互</button>
+    </div>
+</div>

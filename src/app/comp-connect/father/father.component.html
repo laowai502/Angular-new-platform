@@ -1,0 +1,31 @@
+<section class="t-father">
+    <div class="t-father-area">
+        <h3>Father component</h3>
+        <div>
+            <div style="display: inline-block; width: 50%; vertical-align: top; margin-top: 20px;">
+                <p style="margin-bottom: 10px;">father count: {{ count }}</p>
+                <label for="t-txt">father txt: </label>
+                <input style="margin-left: 20px;" id="t-txt" type="text" [(ngModel)]="txt" />
+                <div style="margin-top: 10px;">
+                    <button type="button" (click)="callChild1()">child num control</button>
+                    <button type="button" (click)="callChildFn1()">child fn</button>
+                </div>
+            </div>
+            <div style="position: relative; display: inline-block; width: 50%;">
+                <ul>
+                    <li *ngFor="let o of list">{{ o }}</li>
+                    <button style="position: absolute; right: 20px; top: 30px;" type="button" (click)="resetList()">reset list</button>
+                    <button style="position: absolute; right: 20px; top: 80px;" type="button" (click)="toggelChild()">toggle child</button>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="t-child-area">
+        <app-child1 #c1 [fTxt]="txt" [fCount]="count" [fFn]="father_fn" *ngIf="toggle"
+            [fComponent]="this" (recallChild1)="recallChild1($event)"></app-child1>
+        <app-child2 #c2 [fTxt]="txt" [fCount]="count" [fFn]="father_fn" 
+            [fComponent]="this" (recallChild2)="recallChild2($event)"></app-child2>
+        <app-child3 #c3 [fTxt]="txt" [fCount]="count" [fFn]="father_fn" 
+            [fComponent]="this" (recallChild3)="recallChild3($event)"></app-child3>
+    </div>
+</section>

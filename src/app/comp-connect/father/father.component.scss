@@ -1,0 +1,32 @@
+@mixin p-layout {
+    display: inline-block;
+    color: #FFF;
+    min-height: 200px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.t-father {
+    width: 100%;
+    // margin-top: 20px;
+    padding: 24px;
+    .t-father-area {
+        padding: 16px;
+        width: inherit;
+        border: solid 1px black;
+        background-color: black;
+        @include p-layout;
+    }
+
+    .t-child-area {
+        width: 100%;
+        ::ng-deep {
+            [class*='t-child'] {
+                border: solid 1px #FFFF00;
+                @include p-layout;
+            }
+        }
+    }
+
+}

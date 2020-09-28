@@ -1,0 +1,8 @@
+<section style="padding: 30px;">
+    <app-l-child [title]="title" *ngIf="flag"></app-l-child>
+    <hr>
+    这是父组件
+    <button (click)="changeTilte()">改变父组件的title</button>
+    <br><br>
+    <button (click)="changeFlag()">挂载以及卸载组件</button>
+</section>

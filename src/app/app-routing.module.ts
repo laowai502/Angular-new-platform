@@ -17,6 +17,14 @@ const routes: Routes = [
         loadChildren: () => import('./go-js/go-js.module').then(m => m.GoJsModule)
     },
     {
+        path: 'comp-connect',
+        loadChildren: () => import('./comp-connect/comp-connect.module').then(m => m.CompConnectModule)
+    },
+    {
+        path: 'life-circle',
+        loadChildren: () => import('./life-circle/life-circle.module').then(m => m.LifeCircleModule)
+    },
+    {
         path: 'login',
         component: LoginComponent
     },

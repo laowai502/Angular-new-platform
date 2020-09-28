@@ -84,6 +84,18 @@ export class Menu implements OnInit, OnDestroy {
                 command: () => {
                     this.router.navigate(['/responsive']);
                 }
+            },
+            {
+                label: 'Component connect',
+                command: () => {
+                    this.router.navigate(['/comp-connect']);
+                }
+            },
+            {
+                label: 'Life circle',
+                command: () => {
+                    this.router.navigate(['/life-circle']);
+                }
             }
         ];
     }

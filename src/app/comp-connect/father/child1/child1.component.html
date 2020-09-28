@@ -1,0 +1,17 @@
+<div class="t-child1">
+    <h3>Child1 component</h3>
+    <p style="margin-top: 10px;">father txt: {{ fTxt }}</p>
+    <p style="margin-top: 10px;">father count: {{ fCount }}</p>
+    <p style="margin-top: 10px;">child count: {{ num }}</p>
+    <p style="margin-top: 10px;">child count: {{ txt }}</p>
+    <div style="margin: 10px 0;">
+        <button type="button" (click)="countFn()">add</button>
+        <button type="button" (click)="call1()">call_father_1</button>
+        <button type="button" (click)="clickSend()">call_father_2</button>
+    </div>
+    <hr>
+    <p style="margin-top: 10px;">connectTxt: {{ connectTxt }}</p>
+    <div style="margin: 10px 0;">
+        <button type="button" (click)="connect()">非父子组件交互</button>
+    </div>
+</div>
