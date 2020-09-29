@@ -25,7 +25,6 @@ import { NgxEchartsModule } from 'ngx-echarts';
 
 import { HighchartsChartModule } from 'highcharts-angular';
 
-
 @NgModule({
     declarations: [
         ...Components,

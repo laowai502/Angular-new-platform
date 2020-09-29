@@ -13,6 +13,7 @@ import { StyleSyntaxComponent } from './main/angular/style-syntax/styleSyntax.co
 
 import { HomeComponent } from './main/home/home.component';
 import { NgxEchartsComponent } from './main/plugin/ngx-echarts/ngx-echarts.component';
+import { HighchartsComponent } from './main/plugin/highcharts/highcharts.component';
 
 import { PagesComponent } from './pages.component';
 
@@ -23,6 +24,7 @@ export const Components = [
     StyleSyntaxComponent,
     // angular-plugin
     NgxEchartsComponent,
+    HighchartsComponent,
     AngularBusyComponent,
     // router-outlet
     PagesComponent,
@@ -71,6 +73,10 @@ const routes: Routes = [
             { // echarts
                 path: 'plugin/ngx-echarts',
                 component: NgxEchartsComponent
+            },
+            { // highcharts
+                path: 'plugin/highcharts-angular',
+                component: HighchartsComponent
             },
             { // markdown
                 path: 'home',

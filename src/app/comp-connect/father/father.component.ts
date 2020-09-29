@@ -36,8 +36,8 @@ export class FatherComponent implements OnInit, AfterViewInit {
     }
 
     father_fn(val) {
-        // console.log(val);
-        // console.log(this);
+        console.log(val);
+        console.log(this);
         this.list.push(val);
     }
 

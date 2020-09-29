@@ -30,6 +30,9 @@ export class Child3Component implements OnInit {
     }
     set dynamicTxt(val: string) {
         this.cnSercice.dynamicData = val;
+        if (val === '') {
+            console.log(1);
+        }
     }
 
     ngOnInit() {

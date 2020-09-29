@@ -25,6 +25,7 @@
             [class*='t-child'] {
                 border: solid 1px #FFFF00;
                 @include p-layout;
+                color: #505050;
             }
         }
     }

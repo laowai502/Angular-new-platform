@@ -2,12 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { ApiService } from 'src/app/api';
 
-import * as Highcharts from 'highcharts';
-
-import * as _ from 'lodash';
-
-import * as SummaryModel from './cip-summary.model';
-
 @Component({
     selector: 'app-style-syntax',
     templateUrl: './styleSyntax.component.html',
@@ -76,69 +70,13 @@ export class StyleSyntaxComponent implements OnInit {
 
     isActive = true;
 
-    Highcharts = Highcharts; // 必填
-
-    ratingChartOption: SummaryModel.ChartOption = new SummaryModel.ChartOption();
-
-    chartOptions = {};
-
     constructor(private apiService: ApiService) { }
 
-    ngOnInit() {
-        this.chartOptions = this.getOptions();
-        console.log(this.ratingChartOption);
-        this.ratingChartOption.series[0].data = [
-            {
-                id: 1,
-                name: 'aaa',
-                y: 50,
-                color: '#FFD700',
-                rowData: {}
-            }
-        ];
-        this.ratingChartOption.series[0].events.click = this.test.bind(this);
-    }
+    ngOnInit() {}
 
     ChangeWidth() {
         this.width = this.width === 500 ? 800 : 500;
         this.height = this.height === 120 ? 200 : 120;
-    }
-
-    getOptions() {
-        return {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: '2018 年浏览器市场份额'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: false
-                    },
-                    showInLegend: true
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: []
-            }]
-        };
-    }
-
-    test() {
-        console.log(1);
-        console.log(this.onlyClass);
     }
 
 }

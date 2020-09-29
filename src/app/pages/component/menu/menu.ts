@@ -71,6 +71,13 @@ export class Menu implements OnInit, OnDestroy {
                         }
                     },
                     {
+                        label: 'Highcharts-angular',
+                        icon: 'pi pi-star-o',
+                        command: () => {
+                            this.router.navigate(['/pages/plugin/highcharts-angular']);
+                        }
+                    },
+                    {
                         label: 'Ng-markdown',
                         icon: 'pi pi-star-o',
                         command: () => {

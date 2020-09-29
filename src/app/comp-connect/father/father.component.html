@@ -20,9 +20,12 @@
             </div>
         </div>
     </div>
-    <div class="t-child-area">
-        <app-child1 #c1 [fTxt]="txt" [fCount]="count" [fFn]="father_fn" *ngIf="toggle"
-            [fComponent]="this" (recallChild1)="recallChild1($event)"></app-child1>
+    <div class="t-child-area" *ngIf="toggle">
+        <app-child1 #c1 [fTxt]="txt" [fCount]="count" [fFn]="father_fn"
+            [fComponent]="this" (recallChild1)="recallChild1($event)">
+            <h1>Ng content</h1>{{ txt }}
+            <input type="checkbox" name="chck" />
+        </app-child1>
         <app-child2 #c2 [fTxt]="txt" [fCount]="count" [fFn]="father_fn" 
             [fComponent]="this" (recallChild2)="recallChild2($event)"></app-child2>
         <app-child3 #c3 [fTxt]="txt" [fCount]="count" [fFn]="father_fn" 

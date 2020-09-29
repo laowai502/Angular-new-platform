@@ -40,8 +40,8 @@ export class Child1Component implements OnInit, AfterContentInit, OnDestroy {
     ngOnInit() {
         console.log(this.fComponent);
 
-        // this.compToCompDestory = this.cnSercice.compToComp.subscribe((data: string) => {
-        this.cnSercice.compToComp.subscribe((data: string) => {
+        this.compToCompDestory = this.cnSercice.compToComp.subscribe((data: string) => {
+        // this.cnSercice.compToComp.subscribe((data: string) => {
             this.connectTxt = data;
             console.log('child1:' + data);
         });
@@ -52,8 +52,8 @@ export class Child1Component implements OnInit, AfterContentInit, OnDestroy {
     }
 
     ngOnDestroy() {
+        this.compToCompDestory.unsubscribe();
         // this.cnSercice.compToComp = new EventEmitter();
-        // this.compToCompDestory.unsubscribe();
         // this.cnSercice.compToComp.unsubscribe();
     }
 
