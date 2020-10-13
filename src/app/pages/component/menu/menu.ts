@@ -103,6 +103,12 @@ export class Menu implements OnInit, OnDestroy {
                 command: () => {
                     this.router.navigate(['/life-circle']);
                 }
+            },
+            {
+                label: 'Go Js',
+                command: () => {
+                    this.router.navigate(['/gojs']);
+                }
             }
         ];
     }
