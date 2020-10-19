@@ -7,9 +7,10 @@ import { GojsAngularModule } from 'gojs-angular';
 import { GoJsRoutingModule, Components } from './go-js-routing.module';
 import { AppPaletteComponent } from './components/palette/palette.component';
 import { OverviewComponent } from './components/overview/overview.component';
+import { TestDiagramComponent } from './components/test-diagram/test-diagram.component';
 
 @NgModule({
-    declarations: [Components, AppPaletteComponent, OverviewComponent],
+    declarations: [Components, AppPaletteComponent, OverviewComponent, TestDiagramComponent],
     imports: [
         CommonModule,
         FormsModule,

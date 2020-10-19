@@ -1,43 +1,52 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit } from '@angular/core';
 import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angular';
 import * as go from 'gojs';
 import * as _ from 'lodash';
 
-import { textStyle, nodeStyle, makePort } from '../../utils';
+import { textStyle, nodeStyle, makePort, showLinkLabel } from '../../utils';
 
 @Component({
-    selector: 'app-palette',
-    templateUrl: './palette.component.html',
-    styleUrls: ['./palette.component.scss'],
+    selector: 'app-test-diagram',
+    templateUrl: './test-diagram.component.html',
+    styleUrls: ['./test-diagram.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class AppPaletteComponent implements OnInit {
+export class TestDiagramComponent implements OnInit, AfterViewInit {
 
-    public paletteModelData: object = { prop: 'val' };
-    public paletteDivClassName = 'myPaletteDiv';
+    @ViewChild('go', { static: true }) public dia: DiagramComponent;
 
-    public paletteNodeData: Array<any> = [
-        { category: 'Start', text: 'Start' },
-        { text: 'Step' },
-        { category: 'Conditional', text: '???' },
-        { category: 'End', text: 'End' },
-        { category: 'Comment', text: 'Comment' }
-    ];
+    node: any = [];
+    link = [];
+    model: object = { prop: 'value' };
 
-    public paletteLinkData: Array<any> = [];
+    skipsDiagramUpdate = false;
+    diagramDivClassName = 'test-diagram';
 
-    public paletteModelChange(changes: go.IncrementalData) {
-        console.log(changes);
-        this.paletteNodeData = DataSyncService.syncNodeData(changes, this.paletteNodeData);
-        this.paletteLinkData = DataSyncService.syncLinkData(changes, this.paletteLinkData);
-        this.paletteModelData = DataSyncService.syncModelData(changes, this.paletteModelData);
+    public diagramModelChange(changes: go.IncrementalData) {
+        this.skipsDiagramUpdate = true;
+
+        this.node = DataSyncService.syncNodeData(changes, this.node);
+        this.link = DataSyncService.syncLinkData(changes, this.link);
+        this.model = DataSyncService.syncModelData(changes, this.model);
     }
 
-    public initPalette(): go.Palette {
+    public init(): go.Diagram {
         const $ = go.GraphObject.make;
-        const palette  = $(go.Palette);
+        const dia = $(go.Diagram,
+            {
+                LinkDrawn: showLinkLabel,  // this DiagramEvent listener is defined below
+                LinkRelinked: showLinkLabel,
+                'undoManager.isEnabled': true, // 必须设置为允许模型更改监听
+                model: $(go.GraphLinksModel, { linkKeyProperty: 'text' }) // linkKeyProperty必要的，使用GraphLinkModel时必须为合并和数据同步定义
+            }
+        );
 
-        palette.nodeTemplateMap.add('',  // the default category
+        dia.addDiagramListener('Modified', (e) => {
+            console.log(e);
+        });
+
+        // define the Node templates for regular nodes
+        dia.nodeTemplateMap.add('',  // the default category
             $(go.Node, 'Table', nodeStyle(),
                 // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
                 $(go.Panel, 'Auto',
@@ -60,7 +69,7 @@ export class AppPaletteComponent implements OnInit {
                 makePort('B', go.Spot.Bottom, go.Spot.BottomSide, true, false)
             ));
 
-        palette.nodeTemplateMap.add('Conditional',
+        dia.nodeTemplateMap.add('Conditional',
             $(go.Node, 'Table', nodeStyle(),
                 // the main object is a Panel that surrounds a TextBlock with a rectangular Shape
                 $(go.Panel, 'Auto',
@@ -83,7 +92,7 @@ export class AppPaletteComponent implements OnInit {
                 makePort('B', go.Spot.Bottom, go.Spot.Bottom, true, false)
             ));
 
-        palette.nodeTemplateMap.add('Start',
+        dia.nodeTemplateMap.add('Start',
             $(go.Node, 'Table', nodeStyle(),
                 $(go.Panel, 'Spot',
                     $(go.Shape, 'Circle',
@@ -97,7 +106,7 @@ export class AppPaletteComponent implements OnInit {
                 makePort('B', go.Spot.Bottom, go.Spot.Bottom, true, false)
             ));
 
-        palette.nodeTemplateMap.add('End',
+        dia.nodeTemplateMap.add('End',
             $(go.Node, 'Table', nodeStyle(),
                 $(go.Panel, 'Spot',
                     $(go.Shape, 'Circle',
@@ -111,7 +120,8 @@ export class AppPaletteComponent implements OnInit {
                 makePort('R', go.Spot.Right, go.Spot.Right, false, true)
             ));
 
-        go.Shape.defineFigureGenerator('File', (shape, w, h) => {
+        // taken from ../extensions/Figures.js:
+        go.Shape.defineFigureGenerator('File', function(shape, w, h) {
             const geo = new go.Geometry();
             const fig = new go.PathFigure(0, 0, true); // starting point
             geo.add(fig);
@@ -129,7 +139,7 @@ export class AppPaletteComponent implements OnInit {
             return geo;
         });
 
-        palette.nodeTemplateMap.add('Comment',
+        dia.nodeTemplateMap.add('Comment',
             $(go.Node, 'Auto', nodeStyle(),
                 $(go.Shape, 'File',
                     { fill: '#282c34', stroke: '#DEE0A3', strokeWidth: 3 }),
@@ -145,13 +155,53 @@ export class AppPaletteComponent implements OnInit {
                 // no ports, because no links are allowed to connect with a comment
             ));
 
-        // palette.model = $(go.GraphLinksModel, { linkKeyProperty: 'key' });
 
-        return palette;
+        // replace the default Link template in the linkTemplateMap
+        dia.linkTemplate =
+            $(go.Link,  // the whole link panel
+                {
+                    routing: go.Link.AvoidsNodes,
+                    curve: go.Link.JumpOver,
+                    corner: 5, toShortLength: 4,
+                    relinkableFrom: true,
+                    relinkableTo: true,
+                    reshapable: true,
+                    resegmentable: true,
+                    selectionAdorned: false
+                },
+                new go.Binding('points').makeTwoWay(),
+                $(go.Shape,  // the highlight shape, normally transparent
+                    { isPanelMain: true, strokeWidth: 8, stroke: 'transparent', name: 'HIGHLIGHT' }),
+                $(go.Shape,  // the link path shape
+                    { isPanelMain: true, stroke: 'gray', strokeWidth: 2 },
+                    new go.Binding('stroke', 'isSelected', function(sel) { return sel ? 'dodgerblue' : 'gray'; }).ofObject()),
+                $(go.Shape,  // the arrowhead
+                    { toArrow: 'standard', strokeWidth: 0, fill: 'gray' }),
+                $(go.Panel, 'Auto',  // the link label, normally not visible
+                    { visible: false, name: 'LABEL', segmentIndex: 2, segmentFraction: 0.5 },
+                    new go.Binding('visible', 'visible').makeTwoWay(),
+                    $(go.Shape, 'RoundedRectangle',  // the label shape
+                        { fill: '#F8F8F8', strokeWidth: 0 }),
+                    $(go.TextBlock, 'Yes',  // the label
+                        {
+                            textAlign: 'center',
+                            font: '10pt helvetica, arial, sans-serif',
+                            stroke: '#333333',
+                            editable: true
+                        },
+                        new go.Binding('text').makeTwoWay())
+                )
+            );
+
+        return dia;
     }
 
     constructor() { }
 
     ngOnInit() {}
+
+    ngAfterViewInit() {
+        console.log(this.dia.diagram.nodeTemplate);
+    }
 
 }
