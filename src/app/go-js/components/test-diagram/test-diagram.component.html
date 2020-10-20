@@ -1,13 +1,17 @@
 <section class="my-flow-control">
-    <div class="menu-bar">
-        <!-- <menu-bar></menu-bar> -->
-    </div>
+    <app-flow-menu-bar></app-flow-menu-bar>
     <div class="main-content">
-        <div class="tool-bar">
-            <!-- <tool-bar></tool-bar> -->
-        </div>
+        <app-flow-tool-bar></app-flow-tool-bar>
         <div class="work-area">
-            <!-- <work-area></work-area> -->
+            <gojs-diagram #go
+                [initDiagram]="init"
+                [nodeDataArray]="node"
+                [linkDataArray]="link"
+                [modelData]="model"
+                [skipsDiagramUpdate]="skipsDiagramUpdate"
+                (modelChange)="diagramModelChange($event)"
+                [divClassName]="diagramDivClassName">
+            </gojs-diagram>
         </div>
         <div class="prop-panel">
             <!-- <prop-panel></prop-panel> -->
@@ -17,16 +21,8 @@
         <!-- <state-bar></state-bar> -->
     </div>
 </section>
-<section>
+<!-- <section>
     <app-palette></app-palette>
-    <gojs-diagram #go
-        [initDiagram]="init"
-        [nodeDataArray]="node"
-        [linkDataArray]="link"
-        [modelData]="model"
-        [skipsDiagramUpdate]="skipsDiagramUpdate"
-        (modelChange)="diagramModelChange($event)"
-        [divClassName]="diagramDivClassName">
-    </gojs-diagram>
+    
     <button type="button" class="btn btn-primary" (click)="add()">add path</button>
-</section>
+</section> -->

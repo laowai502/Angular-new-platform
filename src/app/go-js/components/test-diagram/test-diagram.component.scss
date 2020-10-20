@@ -1,7 +1,17 @@
+.work-area {
+    display: inline-block;
+    width: calc(100% - 250px);
+}
+
 .test-diagram {
     background: whitesmoke;
-    width: 800px;
-    height: 400px;
+    width: 100%;
+    height: 500px;
     border: 1px solid black;
     display: inline-block;
+}
+
+
+.my-flow-control {
+    
 }

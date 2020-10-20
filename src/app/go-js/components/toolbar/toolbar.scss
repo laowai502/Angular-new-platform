@@ -1,0 +1,13 @@
+.tool-bar {
+    width: 230px;
+    transition: .3s;
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    
+    .fa-angle-double-left {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+    }
+}

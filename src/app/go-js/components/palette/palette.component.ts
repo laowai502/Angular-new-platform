@@ -37,17 +37,23 @@ export class AppPaletteComponent implements OnInit {
         palette.layout = $(go.GridLayout);
         // palette.contentAlignment = go.Spot.Center;
 
-        palette.nodeTemplate = $(go.Part,
+        palette.nodeTemplate = $(go.Node, {
+                selectionAdorned: false,
+            },
             $(go.Panel, 'Table',
-                { defaultAlignment: go.Spot.Center },
+                // { defaultAlignment: go.Spot.Center },
                 $(go.Shape,
                     {
+                        stroke: '0.5',
                         fill: 'lightblue',
                         margin: new go.Margin(10, 0, 0, 0),
-                        width: 50, height: 35, alignment: go.Spot.Center
+                        width: 40, height: 28,
                     },
                     new go.Binding('figure', 'fig'), new go.Binding('fill', 'color'),
-                    new go.Binding('geometryString', 'geometryString')
+                    new go.Binding('geometryString', 'geometryString'),
+                    new go.Binding('width', 'width'),
+                    new go.Binding('height', 'height'),
+                    new go.Binding('margin', 'margin')
                 )
         ));
 
@@ -58,12 +64,19 @@ export class AppPaletteComponent implements OnInit {
 
     constructor() {
         for (const i of SHAPES) {
-            this.paletteNodeData.push({ key: i.name, color: '#FFFFFF', fig: i.figure, geometryString: i.geometryString });
+            this.paletteNodeData.push({
+                key: i.name,
+                width: i.width,
+                height: i.height,
+                margin: i.margin,
+                color: '#FFFFFF',
+                fig: i.figure,
+                geometryString: i.geometryString
+            });
         }
     }
 
-    ngOnInit() {
-        console.log(go.Shape.getFigureGenerators().toArray());
-    }
+    ngOnInit() {}
+
 
 }

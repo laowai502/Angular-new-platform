@@ -16,6 +16,10 @@ h1, h2, h3, h4, h5 {
     font-weight: 600;
 }
 
+* {
+    outline: none;
+}
+
 body {
     &::-webkit-scrollbar {
     	width: 6px;
@@ -113,3 +117,5 @@ button:focus {
     background-color: rgb(85, 102, 255);
     color: #FFF;
 }
+
+@import './app/themes/primeng.scss';
