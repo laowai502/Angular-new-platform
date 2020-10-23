@@ -34,30 +34,27 @@ export class AppPaletteComponent implements OnInit {
         const $ = go.GraphObject.make;
         const palette  = $(go.Palette);
 
-        palette.layout = $(go.GridLayout);
-        // palette.contentAlignment = go.Spot.Center;
-
-        palette.nodeTemplate = $(go.Node, {
-                selectionAdorned: false,
+        palette.nodeTemplate = $(go.Node, 'Auto', {
+                // selectionAdorned: false,
+                margin: 0
             },
-            $(go.Panel, 'Table',
-                // { defaultAlignment: go.Spot.Center },
-                $(go.Shape,
-                    {
-                        stroke: '0.5',
-                        fill: 'lightblue',
-                        margin: new go.Margin(10, 0, 0, 0),
-                        width: 40, height: 28,
-                    },
-                    new go.Binding('figure', 'fig'), new go.Binding('fill', 'color'),
-                    new go.Binding('geometryString', 'geometryString'),
-                    new go.Binding('width', 'width'),
-                    new go.Binding('height', 'height'),
-                    new go.Binding('margin', 'margin')
-                )
-        ));
+            $(go.Shape,
+                {
+                    stroke: '#5C5C5C',
+                    fill: 'lightblue',
+                    margin: new go.Margin(10, 0, 0, 0),
+                    width: 40, height: 28,
+                },
+                new go.Binding('figure', 'fig'),
+                new go.Binding('fill', 'color'),
+                new go.Binding('geometryString', 'geometryString'),
+                new go.Binding('width', 'width'),
+                new go.Binding('height', 'height'),
+                new go.Binding('margin', 'margin')
+            )
+        );
 
-        palette.model = $(go.GraphLinksModel, { linkKeyProperty: 'name' });
+        palette.model = $(go.GraphLinksModel, { linkKeyProperty: 'key' });
 
         return palette;
     }

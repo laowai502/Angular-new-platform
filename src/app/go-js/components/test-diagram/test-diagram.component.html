@@ -3,6 +3,7 @@
     <div class="main-content">
         <app-flow-tool-bar></app-flow-tool-bar>
         <div class="work-area">
+            <app-ruler></app-ruler>
             <gojs-diagram #go
                 [initDiagram]="init"
                 [nodeDataArray]="node"
@@ -21,8 +22,3 @@
         <!-- <state-bar></state-bar> -->
     </div>
 </section>
-<!-- <section>
-    <app-palette></app-palette>
-    
-    <button type="button" class="btn btn-primary" (click)="add()">add path</button>
-</section> -->

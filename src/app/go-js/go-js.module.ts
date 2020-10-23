@@ -14,6 +14,10 @@ import { FlowToolBar } from './components/toolbar/toolbar';
 // plugins
 import { GojsAngularModule } from 'gojs-angular';
 import { AccordionModule } from 'primeng/accordion';
+import { TabViewModule } from 'primeng/tabview';
+
+import { RulerComponent } from './components/ruler/ruler';
+import { WorkareaComponent } from './components/workarea/workarea';
 
 @NgModule({
     declarations: [
@@ -22,14 +26,17 @@ import { AccordionModule } from 'primeng/accordion';
         OverviewComponent,
         TestDiagramComponent,
         FlowMenuBar,
-        FlowToolBar
+        FlowToolBar,
+        RulerComponent,
+        WorkareaComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
         GoJsRoutingModule,
         GojsAngularModule,
-        AccordionModule
+        AccordionModule,
+        TabViewModule
     ]
 })
 export class GoJsModule { }

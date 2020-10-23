@@ -1,19 +1,13 @@
-<section>
-    <!-- <gojs-diagram #myDiagram
-        [initDiagram]="initDiagram"
-        [nodeDataArray]="diagramNodeData"
-        [linkDataArray]="diagramLinkData"
-        [modelData]="diagramModelData"
-        [skipsDiagramUpdate]="skipsDiagramUpdate"
-        (modelChange)="diagramModelChange($event)"
-        [divClassName]="diagramDivClassName">
-    </gojs-diagram> -->
-    <!-- <div class="row">
-        <div class="col-md-6">
-            <button type="button" class="btn btn-primary" (click)="addNode()">add</button>
+<section class="my-flow-control">
+    <app-flow-menu-bar></app-flow-menu-bar>
+    <div class="main-content">
+        <app-flow-tool-bar></app-flow-tool-bar>
+        <app-workarea></app-workarea>
+        <div class="prop-panel">
+            <!-- <prop-panel></prop-panel> -->
         </div>
-    </div> -->
-    <app-test-diagram></app-test-diagram>
-    <!-- <app-palette></app-palette> -->
-    <!-- <app-overview></app-overview> -->
+    </div>
+    <div class="state-bar">
+        <!-- <state-bar></state-bar> -->
+    </div>
 </section>

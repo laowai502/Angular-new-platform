@@ -1,0 +1,95 @@
+$tick-color: #c8c8c8;
+$corner-bg-color: #f0f0f0;
+
+.ruler {
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+
+    .ruler-corner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 18px;
+        height: 18px;
+        background-color: $corner-bg-color;
+        border-width: 0px;
+        border-style: solid;
+        border-color: $tick-color;
+        z-index: 2;
+    }
+
+    .ruler-top, .ruler-left {
+        position: absolute;
+        z-index: 3;
+        .tick {
+            background: none repeat scroll 0% 0% $tick-color;
+        }
+        .major {
+            position: absolute;
+            text-indent: 1px;
+            font-size: 9px;
+        }
+        .micro, .minor {
+            position: absolute;
+        }
+    }
+
+    .ruler-top {
+        top: 0;
+        left: 17px;
+        height: 18px;
+        width: inherit;
+        border-bottom:  1px solid $tick-color;
+        // border-top:  1px solid $tick-color;
+        .major {
+            top: 0;
+            width: 1px;
+            height: 100%;
+            line-height: 10px;
+        }
+        .micro {
+            bottom: 0px;
+            width: 1px;
+            height: 6px;
+        }
+        .minor {
+            bottom: 0px;
+            width: 1px;
+            height: 8px;
+        }
+    }
+    .ruler-left {
+        top: 17px;
+        left: 0;
+        width: 18px;
+        height: inherit;
+        border-right: 1px solid $tick-color;
+        // border-left: 1px solid $tick-color;
+        .major {
+            top: 0;
+            width: 100%;
+            height: 1px;
+            line-height: 6px;
+            span {
+                margin-left: -5px;
+                display: block;
+                transform: rotate(-90deg);
+            }
+        }
+        .micro {
+            right: 0px;
+            width: 8px;
+            height: 1px;
+        }
+        .minor {
+            right: 0px;
+            width: 6px;
+            height: 1px;
+        }
+    }
+
+}

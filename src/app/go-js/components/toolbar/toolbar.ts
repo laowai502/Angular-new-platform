@@ -8,7 +8,11 @@ import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit } fr
 })
 export class FlowToolBar implements OnInit {
 
-    constructor() {}
+    keyword: string;
+
+    constructor() {
+        this.keyword = '';
+    }
 
     ngOnInit() {}
 

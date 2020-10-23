@@ -1,6 +1,5 @@
 import * as go from 'gojs';
 
-
 // Make link labels visible if coming out of a "conditional" node.
 // This listener is called by the "LinkDrawn" and "LinkRelinked" DiagramEvents.
 export function showLinkLabel(e) {

@@ -1,12 +1,14 @@
 .work-area {
     display: inline-block;
     width: calc(100% - 250px);
+    padding: 24px 0 0 24px;
+    position: relative;
 }
 
 .test-diagram {
     background: whitesmoke;
-    width: 100%;
-    height: 500px;
+    width: 90%;
+    height: 460px;
     border: 1px solid black;
     display: inline-block;
 }

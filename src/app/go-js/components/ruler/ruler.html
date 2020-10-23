@@ -1,0 +1,14 @@
+<div class="ruler" [style.height.px]="800" [style.width.px]="1800">
+    <div class="ruler-corner"></div>
+    <div class="ruler-top">
+        <div class="tick" *ngFor="let i of rulerX; let odd=odd" 
+            [ngClass]="{'micro': !odd && i%10!=0, 'minor': odd && i%10!=0, 'major': i%10==0 }" [style.left.px]="i*10">{{ i%10==0 ? i : '' }}
+        </div>
+    </div>
+    <div class="ruler-left">
+        <div class="tick" *ngFor="let i of rulerY; let odd=odd" 
+            [ngClass]="{'micro': !odd && i%10!=0, 'minor': odd && i%10!=0, 'major': i%10==0 }" [style.top.px]="i*10">
+            <span *ngIf="i%10==0">{{i}}</span>
+        </div>
+    </div>
+</div>

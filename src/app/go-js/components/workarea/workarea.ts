@@ -1,17 +1,17 @@
 import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit } from '@angular/core';
 import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angular';
+
 import * as go from 'gojs';
 import * as _ from 'lodash';
 
 import { textStyle, nodeStyle, makePort, showLinkLabel } from '../../utils';
 
 @Component({
-    selector: 'app-test-diagram',
-    templateUrl: './test-diagram.component.html',
-    styleUrls: ['./test-diagram.component.scss'],
-    encapsulation: ViewEncapsulation.None
+    selector: 'app-workarea',
+    templateUrl: './workarea.html',
+    styleUrls: ['./workarea.scss']
 })
-export class TestDiagramComponent implements OnInit, AfterViewInit {
+export class WorkareaComponent implements OnInit, AfterViewInit {
 
     @ViewChild('go', { static: true }) public dia: DiagramComponent;
 
@@ -52,7 +52,7 @@ export class TestDiagramComponent implements OnInit, AfterViewInit {
 
     constructor() { }
 
-    ngOnInit() {}
+    ngOnInit() { }
 
     ngAfterViewInit() {
         console.log(this.dia.diagram.nodeTemplate);
@@ -62,10 +62,7 @@ export class TestDiagramComponent implements OnInit, AfterViewInit {
         const { diagram } = this.dia;
         const $ = go.GraphObject.make;
         diagram.add(
-            $(go.Node,
-              $(go.Shape,
-                { geometryString: "F M120 0 L80 80 0 50z",
-                  fill: "lightgreen" })));
+            $(go.Node)
+        );
     }
-
 }

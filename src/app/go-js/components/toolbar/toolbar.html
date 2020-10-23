@@ -1,11 +1,20 @@
 <div class="tool-bar">
     <h5>Shapes</h5>
     <i class="fa fa-angle-double-left"></i>
-    <div>
-        
+    <div class="tool-bar-search">
+        <input type="text" [(ngModel)]="keyword" />
+        <span class="icon-group">
+            <i class="fa fa-angle-up"></i>
+        </span>
+        <span class="icon-group" style="bottom: 10px;">
+            <i class="fa fa-angle-down"></i>
+        </span>
     </div>
     <p-accordion [multiple]="true">
         <p-accordionTab header="Basic Flowchart Shapes" [selected]="true">
+            <app-palette></app-palette>
+        </p-accordionTab>
+        <p-accordionTab header="Arrows Shapes" [selected]="true">
             <app-palette></app-palette>
         </p-accordionTab>
     </p-accordion>
