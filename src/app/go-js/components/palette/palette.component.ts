@@ -1,12 +1,10 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, Input } from '@angular/core';
 import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angular';
-
-import { SHAPES } from '../../config/shape';
 
 import * as go from 'gojs';
 import * as _ from 'lodash';
 
-import { textStyle, nodeStyle, makePort } from '../../utils';
+import {  makePort } from '../../utils';
 
 @Component({
     selector: 'app-palette',
@@ -16,6 +14,10 @@ import { textStyle, nodeStyle, makePort } from '../../utils';
 })
 export class AppPaletteComponent implements OnInit {
 
+    @ViewChild('pla', { static: true }) public pla: PaletteComponent;
+
+    @Input() nodeData: Array<any>;
+
     public paletteModelData: object = { prop: 'val' };
     public paletteDivClassName = 'myPaletteDiv';
 
@@ -24,7 +26,6 @@ export class AppPaletteComponent implements OnInit {
     public paletteLinkData: Array<any> = [];
 
     public paletteModelChange(changes: go.IncrementalData) {
-        console.log(changes);
         this.paletteNodeData = DataSyncService.syncNodeData(changes, this.paletteNodeData);
         this.paletteLinkData = DataSyncService.syncLinkData(changes, this.paletteLinkData);
         this.paletteModelData = DataSyncService.syncModelData(changes, this.paletteModelData);
@@ -32,10 +33,12 @@ export class AppPaletteComponent implements OnInit {
 
     public initPalette(): go.Palette {
         const $ = go.GraphObject.make;
-        const palette  = $(go.Palette);
+        const palette  = $(go.Palette, {
+            layout: $(go.GridLayout)
+        });
 
         palette.nodeTemplate = $(go.Node, 'Auto', {
-                // selectionAdorned: false,
+                selectionAdorned: false,
                 margin: 0
             },
             $(go.Shape,
@@ -59,8 +62,10 @@ export class AppPaletteComponent implements OnInit {
         return palette;
     }
 
-    constructor() {
-        for (const i of SHAPES) {
+    constructor() {}
+
+    ngOnInit() {
+        for (const i of this.nodeData) {
             this.paletteNodeData.push({
                 key: i.name,
                 width: i.width,
@@ -71,9 +76,11 @@ export class AppPaletteComponent implements OnInit {
                 geometryString: i.geometryString
             });
         }
-    }
 
-    ngOnInit() {}
+        const { nativeElement: ele } = this.pla.paletteDiv;
+        const len = this.nodeData.length;
+        ele.style.height = len > 4 ? ((this.nodeData.length / 4) * 55) + 'px' : '55px';
+    }
 
 
 }

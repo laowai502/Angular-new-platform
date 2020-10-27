@@ -2,21 +2,7 @@
     <p-tabView styleClass="work-area-tab" [controlClose]="true">
         <p-tabPanel header="new item1" leftIcon="fa fa-file-text-o" [closable]="true">
             <app-ruler></app-ruler>
-            <div class="diagram-wrap">
-                <gojs-diagram #go
-                    [initDiagram]="init"
-                    [nodeDataArray]="node"
-                    [linkDataArray]="link"
-                    [modelData]="model"
-                    [skipsDiagramUpdate]="skipsDiagramUpdate"
-                    (modelChange)="diagramModelChange($event)"
-                    [divClassName]="diagramDivClassName">
-                </gojs-diagram>
-            </div>
-        </p-tabPanel>
-        <p-tabPanel header="new item2" leftIcon="fa fa-user" [closable]="true">
-            <app-ruler></app-ruler>
-            <div class="diagram-wrap">
+            <div class="diagram-wrap" [style.height.px]="waH">
                 <gojs-diagram #go
                     [initDiagram]="init"
                     [nodeDataArray]="node"

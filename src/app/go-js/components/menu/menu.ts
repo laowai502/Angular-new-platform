@@ -1,4 +1,6 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
+
+import { GoJsService } from '../../go-js.service';
 
 @Component({
     selector: 'app-flow-menu-bar',
@@ -8,9 +10,15 @@ import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit } fr
 })
 export class FlowMenuBar implements OnInit {
 
-    constructor() {}
+    constructor(
+        private el: ElementRef,
+        private gjs: GoJsService
+    ) {}
 
-    ngOnInit() {}
+    ngOnInit() {
+        const { children: ele } = this.el.nativeElement;
+        this.gjs.setHeaderSize(ele[0].clientWidth, ele[0].clientHeight);
+    }
 
     expand() {
 
@@ -19,6 +27,5 @@ export class FlowMenuBar implements OnInit {
     fullScreen() {
 
     }
-
 
 }

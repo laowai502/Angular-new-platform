@@ -6,10 +6,11 @@ import { FormsModule } from '@angular/forms';
 import { GoJsRoutingModule, Components } from './go-js-routing.module';
 import { AppPaletteComponent } from './components/palette/palette.component';
 import { OverviewComponent } from './components/overview/overview.component';
-import { TestDiagramComponent } from './components/test-diagram/test-diagram.component';
 
 import { FlowMenuBar } from './components/menu/menu';
 import { FlowToolBar } from './components/toolbar/toolbar';
+
+import { GoJsService } from './go-js.service';
 
 // plugins
 import { GojsAngularModule } from 'gojs-angular';
@@ -24,7 +25,6 @@ import { WorkareaComponent } from './components/workarea/workarea';
         Components,
         AppPaletteComponent,
         OverviewComponent,
-        TestDiagramComponent,
         FlowMenuBar,
         FlowToolBar,
         RulerComponent,
@@ -37,6 +37,9 @@ import { WorkareaComponent } from './components/workarea/workarea';
         GojsAngularModule,
         AccordionModule,
         TabViewModule
+    ],
+    providers: [
+        GoJsService
     ]
 })
 export class GoJsModule { }

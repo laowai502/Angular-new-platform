@@ -1,21 +1,22 @@
 <div class="tool-bar">
-    <h5>Shapes</h5>
-    <i class="fa fa-angle-double-left"></i>
-    <div class="tool-bar-search">
-        <input type="text" [(ngModel)]="keyword" />
-        <span class="icon-group">
-            <i class="fa fa-angle-up"></i>
-        </span>
-        <span class="icon-group" style="bottom: 10px;">
-            <i class="fa fa-angle-down"></i>
-        </span>
+    <div #top class="too-bar-top">
+        <h5>Shapes</h5>
+        <i class="fa fa-angle-double-left"></i>
+        <div class="tool-bar-search">
+            <input type="text" [(ngModel)]="keyword" placeholder="search" />
+            <span class="icon-group">
+                <i class="fa fa-angle-up"></i>
+            </span>
+            <span class="icon-group" style="bottom: 10px;">
+                <i class="fa fa-angle-down"></i>
+            </span>
+        </div>
     </div>
-    <p-accordion [multiple]="true">
-        <p-accordionTab header="Basic Flowchart Shapes" [selected]="true">
-            <app-palette></app-palette>
-        </p-accordionTab>
-        <p-accordionTab header="Arrows Shapes" [selected]="true">
-            <app-palette></app-palette>
-        </p-accordionTab>
-    </p-accordion>
+    <div class="too-bar-bottom" [style.height.px]="bH">
+        <p-accordion [multiple]="true">
+            <p-accordionTab *ngFor="let item of shapes" [header]="item.name" [selected]="true">
+                <app-palette [nodeData]="item.data"></app-palette>
+            </p-accordionTab>
+        </p-accordion>
+    </div>
 </div>

@@ -1,4 +1,8 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
+
+import { SHAPES } from '../../config/shape';
+
+import { GoJsService } from '../../go-js.service';
 
 @Component({
     selector: 'app-flow-tool-bar',
@@ -8,10 +12,21 @@ import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit } fr
 })
 export class FlowToolBar implements OnInit {
 
+    @ViewChild('top', { static: true }) top: ElementRef;
+
     keyword: string;
 
-    constructor() {
+    shapes: object;
+
+    get bH(): number {
+        const { mainHeight: mH, headerHeight: hH } = this.gjs;
+        const { nativeElement: ele } = this.top;
+        return mH - hH - ele.clientHeight;
+    }
+
+    constructor(private gjs: GoJsService) {
         this.keyword = '';
+        this.shapes = SHAPES;
     }
 
     ngOnInit() {}
