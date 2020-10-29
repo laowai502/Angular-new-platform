@@ -30,12 +30,12 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: 'pages/home',
+        redirectTo: '',
         pathMatch: 'full'
     },
     {
         path: '**',
-        redirectTo: 'pages'
+        redirectTo: ''
     }
 ];
 

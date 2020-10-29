@@ -1,15 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable()
 export class GoJsService {
 
+    /* uesd params to resize */
+    // 整体宽高
     public mainWidth: number;
     public mainHeight: number;
 
+    // menu宽高
     public headerWidth: number;
     public headerHeight: number;
 
-    constructor() { }
+    public shareTemplate: EventEmitter<any>;
+
+    constructor() {
+        this.shareTemplate = new EventEmitter();
+    }
 
     public setMainSize(w: number = 0, h: number = 0): void {
         this.mainWidth = w;

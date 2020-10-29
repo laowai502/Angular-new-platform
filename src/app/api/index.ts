@@ -7,9 +7,7 @@ import { RequestService } from 'src/app/common/http/request.service';
 import { Observable } from 'rxjs';
 
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class ApiService extends RequestService {
 
     constructor(http: HttpClient) {

@@ -14,7 +14,8 @@ export const SHAPES: Array<any> = [
             },
             {
                 name: 'Diamond',
-                figure: 'Diamond'
+                figure: 'Diamond',
+                size: '100 60'
             },
             {
                 name: 'c1',
@@ -30,7 +31,8 @@ export const SHAPES: Array<any> = [
             },
             {
                 name: 'Ellipse',
-                figure: 'Ellipse'
+                figure: 'Ellipse',
+                size: '100 60'
             },
             {
                 name: 'c4',
@@ -89,27 +91,32 @@ export const SHAPES: Array<any> = [
                 geometryString: 'F M17.5 0 L23 12.3 L35 12.3 L27 20 L30 35 L17.5 24.6 L5 35 L8 20 L0 12.3 L12 12.3z',
                 width: 35,
                 height: 35,
-                margin: new go.Margin(8, 0, 0, 5)
+                size: '80 80',
+                margin: new go.Margin(5, 0, 0, 5)
             },
             {
                 name: 'Square',
                 figure: 'Square',
                 width: 35,
-                margin: new go.Margin(10, 0, 0, 5)
+                margin: new go.Margin(10, 0, 0, 5),
+                size: '75 75'
             },
             {
                 name: 'Circle',
                 figure: 'Circle',
-                margin: new go.Margin(10, 0, 0, 5)
+                margin: new go.Margin(10, 0, 0, 5),
+                size: '75 75'
             },
             {
                 name: 'Triangle',
                 figure: 'Triangle',
-                width: 40
+                width: 35,
+                size: '75 65'
             },
             {
                 name: 'c18',
                 geometryString: 'F M0 0 L80 0 B-90 90 80 20 20 20 L100 100 20 100 B90 90 20 80 20 20z',
+                margin: new go.Margin(14, 0, 0, 0),
             },
             {
                 name: 'c19',
@@ -117,55 +124,37 @@ export const SHAPES: Array<any> = [
                 geometryString: 'F M0 35 L25 35 L35 25 L35 0 L10 0 L0 10 L25 10 L35 0 M25 10 L25 35 M0 10 L0 35',
                 width: 35,
                 height: 35,
-                margin: new go.Margin(10, 0, 0, 5)
+                margin: new go.Margin(10, 0, 0, 5),
+                size: '80 80'
             },
             {
                 name: 'user',
                 geometryString: 'F M13 0 B0 360 5 0 8 8 M-2 4 S-8 4 -8 8 L-8 23 S-8 26 -6 26 L12 26 S18 26 18 23 L18 8 S18 4 12 4',
                 width: 26,
                 height: 35,
-                margin: new go.Margin(8, 0, 0, 8)
+                margin: new go.Margin(8, 0, 0, 8),
+                size: '60 80'
             }
         ]
     },
     {
         name: 'Flow Charts',
         data: [
-            // {
-            //     name: 'c19',
-            //     // geometryString: 'F M0 0 L25 0 L35 10 L35 35 L10 35 L0 25 L25 25 L35 35 M25 25 L25 0 M0 25 L0 0',
-            //     geometryString: 'F M0 35 L25 35 L35 25 L35 0 L10 0 L0 10 L25 10 L35 0 M25 10 L25 35 M0 10 L0 35',
-            //     width: 35,
-            //     height: 35,
-            //     margin: new go.Margin(10, 0, 0, 5)
-            // }
+            { name: 'Start', text: 'Start', figure: 'Ellipse', size: '75 75', fill: '#00AD5F', width: 28, height: 28, margin: new go.Margin(10, 0, 0, 8) },
+            { name: 'Step', text: 'Step' },
+            { name: 'DB', text: 'DB', figure: 'Database', fill: 'lightgray' },
+            { name: '???', text: '???', figure: 'Diamond', fill: 'lightskyblue', size: '100 60' },
+            { name: 'End', text: 'End', figure: 'Ellipse', size: '75 75', fill: '#CE0620', width: 28, height: 28, margin: new go.Margin(10, 0, 0, 8) },
+            { name: 'Comment', text: 'xxx', figure: 'RoundedRectangle', fill: 'lightyellow' }
         ]
     },
     {
         name: 'Arrows',
-        data: [
-            // {
-            //     name: 'c19',
-            //     // geometryString: 'F M0 0 L25 0 L35 10 L35 35 L10 35 L0 25 L25 25 L35 35 M25 25 L25 0 M0 25 L0 0',
-            //     geometryString: 'F M0 35 L25 35 L35 25 L35 0 L10 0 L0 10 L25 10 L35 0 M25 10 L25 35 M0 10 L0 35',
-            //     width: 35,
-            //     height: 35,
-            //     margin: new go.Margin(10, 0, 0, 5)
-            // }
-        ]
+        data: []
     },
     {
         name: 'BMPN',
-        data: [
-            // {
-            //     name: 'c19',
-            //     // geometryString: 'F M0 0 L25 0 L35 10 L35 35 L10 35 L0 25 L25 25 L35 35 M25 25 L25 0 M0 25 L0 0',
-            //     geometryString: 'F M0 35 L25 35 L35 25 L35 0 L10 0 L0 10 L25 10 L35 0 M25 10 L25 35 M0 10 L0 35',
-            //     width: 35,
-            //     height: 35,
-            //     margin: new go.Margin(10, 0, 0, 5)
-            // }
-        ]
+        data: []
     }
 ];
 
