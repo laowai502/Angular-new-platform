@@ -99,11 +99,17 @@ export class Menu implements OnInit, OnDestroy {
                 }
             },
             {
-                label: 'Life circle',
+                label: 'NgModule',
                 command: () => {
-                    this.router.navigate(['/life-circle']);
+                    this.router.navigate(['/pages/angular/style-syntax']);
                 }
             },
+            // {
+            //     label: 'Life circle',
+            //     command: () => {
+            //         this.router.navigate(['/life-circle']);
+            //     }
+            // },
             {
                 label: 'Go Js',
                 command: () => {

@@ -7,9 +7,7 @@ import { removeObjectEmpty, removeObjectEmptyValue } from '../util';
 import * as _ from 'lodash';
 import { Observable } from 'rxjs';
 
-@Injectable({
-    providedIn: 'root'
-})
+@Injectable()
 export class RequestService {
 
     // private baseUrl = environment.apiUrl;

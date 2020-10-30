@@ -6,6 +6,8 @@ import { DomChildComponent } from './domChild';
 
 import { slideDown, slideUp } from '../../../../common/util/slide';
 
+import { ApiService } from 'src/app/api';
+
 const mockData = [
     { id: 1, pId: 0, name: 'group-1', hasChild: true, isOpen: true },
     { id: 11, pId: 1, name: 'group-1-sub-1', hasChild: true, isOpen: false },
@@ -35,6 +37,7 @@ const mockData = [
     selector: 'app-dom',
     templateUrl: './dom.component.html',
     styleUrls: ['./dom.component.scss', '../../../../themes/markdown.scss']
+    // providers: [ApiService]
 })
 export class DomComponent implements OnInit, AfterViewInit {
 
@@ -47,7 +50,8 @@ export class DomComponent implements OnInit, AfterViewInit {
 
     constructor(
         private render: Renderer2,
-        private el: ElementRef
+        private el: ElementRef,
+        private apiService: ApiService
     ) {}
 
     ngOnInit() {

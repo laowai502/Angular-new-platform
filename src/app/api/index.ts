@@ -7,19 +7,18 @@ import { RequestService } from 'src/app/common/http/request.service';
 import { Observable } from 'rxjs';
 
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
 export class ApiService extends RequestService {
 
     constructor(http: HttpClient) {
         super(http);
+        console.log('have been instance');
     }
 
     public middleApiList(): Promise<any> {
         return this.get('/getTestList');
-    }
-
-    public middleApiList1(): Observable<any> {
-        return this.obGet('/getTestList');
     }
 
 }

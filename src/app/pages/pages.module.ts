@@ -5,7 +5,9 @@ import { CommonModule } from '@angular/common';
 import { PagesRoutingModule, Components } from './pages-routing.module';
 import { ChildsComponent } from './component/component';
 
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
+import { AuthService } from '../common/auth.service';
 
 // My
 import { DirectiveModule } from '../directive/directive.module';
@@ -34,9 +36,7 @@ import { HighchartsChartModule } from 'highcharts-angular';
         FormsModule,
         CommonModule,
         PagesRoutingModule,
-        HttpClientModule,
         DirectiveModule,
-
         PanelMenuModule,
         MessageModule,
         MessagesModule,
@@ -50,6 +50,9 @@ import { HighchartsChartModule } from 'highcharts-angular';
         }),
         NgxEchartsModule,
         HighchartsChartModule
+    ],
+    providers: [
+        AuthService
     ]
 })
 export class PagesModule {}

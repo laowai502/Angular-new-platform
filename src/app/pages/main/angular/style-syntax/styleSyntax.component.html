@@ -1,5 +1,5 @@
 <section class="main-pages-content ui-g">
-    <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
+    <!-- <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
         <markdown class="variable-binding" [data]="md"></markdown>
     </div>
     <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
@@ -7,9 +7,14 @@
     </div>
     <div class="one-wrapper" style="background-color: #FFFF00;" [style.width.px]="width" [style.height.px]="height" [style.marginLeft.px]="50">
         angular style template syntax collections
+    </div> -->
+    <button pButton type="button" class="mr12" (click)="getList()" label="getList"></button>
+    <!-- <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
+        <markdown class="variable-binding" [src]="'assets/md/angular/module.md'"></markdown>
+    </div> -->
+
+    <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
+        <markdown class="variable-binding" [src]="'assets/md/angular/lazyModule.md'"></markdown>
     </div>
     
-    <div class="ui-g-12" style="padding: 16px 20px; margin-bottom: 20px;">
-        <markdown class="variable-binding" [data]="md1"></markdown>
-    </div>
-</section>      
+</section>

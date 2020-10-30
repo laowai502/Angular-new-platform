@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from 'src/app/common/auth.service';
+
 import { ApiService } from 'src/app/api';
 
 @Component({
     selector: 'app-style-syntax',
     templateUrl: './styleSyntax.component.html',
-    styleUrls: ['./styleSyntax.component.scss', '../../../../themes/markdown.scss']
+    styleUrls: ['./styleSyntax.component.scss', '../../../../themes/markdown.scss'],
+    providers: [ApiService, AuthService]
 })
 // tslint:disable-next-line: class-name
 export class StyleSyntaxComponent implements OnInit {
@@ -70,13 +73,19 @@ export class StyleSyntaxComponent implements OnInit {
 
     isActive = true;
 
-    constructor(private apiService: ApiService) { }
+    constructor(public auth: AuthService, private apiService: ApiService) { }
 
     ngOnInit() {}
 
     ChangeWidth() {
         this.width = this.width === 500 ? 800 : 500;
         this.height = this.height === 120 ? 200 : 120;
+    }
+
+    getList() {
+        this.apiService.middleApiList().then(res => {
+            console.log(res.data);
+        });
     }
 
 }
