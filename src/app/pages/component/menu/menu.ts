@@ -98,12 +98,12 @@ export class Menu implements OnInit, OnDestroy {
                     this.router.navigate(['/comp-connect']);
                 }
             },
-            {
-                label: 'NgModule',
-                command: () => {
-                    this.router.navigate(['/pages/angular/style-syntax']);
-                }
-            },
+            // {
+            //     label: 'NgModule',
+            //     command: () => {
+            //         this.router.navigate(['/pages/angular/style-syntax']);
+            //     }
+            // },
             // {
             //     label: 'Life circle',
             //     command: () => {
