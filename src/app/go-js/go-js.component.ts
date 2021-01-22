@@ -6,6 +6,7 @@ import { GoJsService } from './go-js.service';
 import * as go from 'gojs';
 import * as _ from 'lodash';
 
+import './config/figure';
 
 @Component({
     selector: 'app-go-js',
@@ -34,11 +35,6 @@ export class GoJsComponent implements OnInit, AfterViewInit {
     dealResize() {
         const { children: ele } = this.el.nativeElement;
         this.gjs.setMainSize(ele[0].clientWidth, ele[0].clientHeight);
-    }
-
-    test() {
-        console.log(this.dia);
-        console.log(this.pla.nodeTemplateMap);
     }
 
 }

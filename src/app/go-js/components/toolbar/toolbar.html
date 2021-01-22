@@ -15,7 +15,12 @@
     <div class="too-bar-bottom" [style.height.px]="bH">
         <p-accordion [multiple]="true">
             <p-accordionTab *ngFor="let item of shapes" [header]="item.name" [selected]="true">
-                <app-palette [nodeData]="item.data"></app-palette>
+                <ng-container *ngIf="item.name == 'BMPN'">
+                    <app-palette-bmpn></app-palette-bmpn>
+                </ng-container>
+                <ng-container *ngIf="item.name != 'BMPN'">
+                    <app-palette [paletteName]="item.name" [nodeData]="item.data"></app-palette>
+                </ng-container>
             </p-accordionTab>
         </p-accordion>
     </div>

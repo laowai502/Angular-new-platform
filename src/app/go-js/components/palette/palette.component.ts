@@ -6,8 +6,6 @@ import * as _ from 'lodash';
 
 import { GoJsService } from '../../go-js.service';
 
-import {  makePort } from '../../utils';
-
 @Component({
     selector: 'app-palette',
     templateUrl: './palette.component.html',
@@ -19,6 +17,7 @@ export class AppPaletteComponent implements OnInit, AfterViewInit, OnDestroy {
     @ViewChild('pla', { static: true }) public pla: PaletteComponent;
 
     @Input() nodeData: Array<any>;
+    @Input() paletteName: string;
 
     private snDestr: any;
 

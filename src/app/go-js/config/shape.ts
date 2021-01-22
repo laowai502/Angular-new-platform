@@ -138,6 +138,10 @@ export const SHAPES: Array<any> = [
         ]
     },
     {
+        name: 'BMPN',
+        data: []
+    },
+    {
         name: 'Flow Charts',
         data: [
             { name: 'Start', text: 'Start', figure: 'Ellipse', size: '75 75', fill: '#00AD5F', width: 28, height: 28, margin: new go.Margin(10, 0, 0, 8) },
@@ -150,10 +154,6 @@ export const SHAPES: Array<any> = [
     },
     {
         name: 'Arrows',
-        data: []
-    },
-    {
-        name: 'BMPN',
         data: []
     }
 ];
