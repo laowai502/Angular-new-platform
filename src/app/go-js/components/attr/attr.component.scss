@@ -1,0 +1,33 @@
+.diagram-attr {
+    width: 200px;
+    min-height: 400px;
+    position: relative;
+    vertical-align: top;
+    display: inline-block;
+    // border: solid 1px #dddddd;
+
+    ::ng-deep {
+        p-tabview {
+            .diagram-attr-tab {
+                height: inherit;
+                li[role="presentation"] {
+                    background-color: rgb(241, 243, 244);
+                    border-color: #dadce0;
+                    margin-right: 0px;
+
+                    &.ui-state-active {
+                        background-color: #FFF;
+                    }
+
+                    a[role='tab'] {
+                        padding: 8px;
+                        color: rgb(112, 112, 112);
+                        font-weight: 600;
+                    }
+                }
+            }
+
+        }
+    }
+    
+}

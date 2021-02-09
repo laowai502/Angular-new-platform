@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { GoJsRoutingModule, Components } from './go-js-routing.module';
+
 import { AppPaletteComponent } from './components/palette/palette.component';
 import { AppPaletteBMPNComponent } from './components/palette/paletteBMPN.component';
 import { OverviewComponent } from './components/overview/overview.component';
@@ -11,6 +12,8 @@ import { FlowMenuBar } from './components/menu/menu';
 import { FlowToolBar } from './components/toolbar/toolbar';
 import { RulerComponent } from './components/ruler/ruler';
 import { WorkareaComponent } from './components/workarea/workarea';
+import { BmpnWorkareaComponent } from './components/workarea/bmpn';
+import { DiagramAttrComponent } from './components/attr/attr.component';
 
 import { GoJsService } from './go-js.service';
 
@@ -18,6 +21,10 @@ import { GoJsService } from './go-js.service';
 import { GojsAngularModule } from 'gojs-angular';
 import { AccordionModule } from 'primeng/accordion';
 import { TabViewModule } from 'primeng/tabview';
+import { PanelModule } from 'primeng/panel';
+import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import {DropdownModule} from 'primeng/dropdown';
 
 @NgModule({
     declarations: [
@@ -28,15 +35,22 @@ import { TabViewModule } from 'primeng/tabview';
         FlowMenuBar,
         FlowToolBar,
         RulerComponent,
-        WorkareaComponent
+        WorkareaComponent,
+        BmpnWorkareaComponent,
+        DiagramAttrComponent
     ],
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         GoJsRoutingModule,
         GojsAngularModule,
         AccordionModule,
-        TabViewModule
+        TabViewModule,
+        PanelModule,
+        ButtonModule,
+        DialogModule,
+        DropdownModule
     ],
     providers: [
         GoJsService

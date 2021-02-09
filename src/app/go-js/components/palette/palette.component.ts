@@ -49,7 +49,7 @@ export class AppPaletteComponent implements OnInit, AfterViewInit, OnDestroy {
                 {
                     stroke: '#5C5C5C',
                     fill: 'lightblue',
-                    margin: new go.Margin(10, 0, 0, 0),
+                    margin: new go.Margin(8, 0, 0, 0),
                     width: 40, height: 28,
                     mouseEnter:  (e, shape) => { shape.original_fill = shape.fill;  shape.fill = '#B8B8B8'; },
                     mouseLeave:  (e, shape) => { shape.fill = shape.original_fill; },
@@ -103,11 +103,11 @@ export class AppPaletteComponent implements OnInit, AfterViewInit, OnDestroy {
                 fig: i.figure,
                 text: i.text,
                 size: i.size,
+                nodeUser: null,
                 geometryString: i.geometryString
             });
         }
         const { nativeElement: ele } = this.pla.paletteDiv;
-        ele.style.height = (Math.ceil((this.nodeData.length / 4)) * 53) + 'px';
+        ele.style.height = (Math.ceil((this.nodeData.length / 4)) * 50.6) + 'px';
     }
-
 }

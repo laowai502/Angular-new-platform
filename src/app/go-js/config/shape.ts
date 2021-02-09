@@ -2,6 +2,17 @@ import * as go from 'gojs';
 
 export const SHAPES: Array<any> = [
     {
+        name: 'Flow Charts',
+        data: [
+            { name: 'Start', text: 'Start', figure: 'Ellipse', size: '75 75', fill: '#00AD5F', width: 28, height: 28, margin: new go.Margin(10, 0, 0, 8) },
+            { name: 'Step', text: 'Step' },
+            { name: 'DB', text: 'DB', figure: 'Database', fill: 'lightgray' },
+            { name: '???', text: '???', figure: 'Diamond', fill: 'lightskyblue', size: '100 60' },
+            { name: 'End', text: 'End', figure: 'Ellipse', size: '75 75', fill: '#CE0620', width: 28, height: 28, margin: new go.Margin(10, 0, 0, 8) },
+            { name: 'Comment', text: 'xxx', figure: 'RoundedRectangle', fill: 'lightyellow' }
+        ]
+    },
+    {
         name: 'Basic Flowchart Shapes',
         data: [
             {
@@ -140,17 +151,6 @@ export const SHAPES: Array<any> = [
     {
         name: 'BMPN',
         data: []
-    },
-    {
-        name: 'Flow Charts',
-        data: [
-            { name: 'Start', text: 'Start', figure: 'Ellipse', size: '75 75', fill: '#00AD5F', width: 28, height: 28, margin: new go.Margin(10, 0, 0, 8) },
-            { name: 'Step', text: 'Step' },
-            { name: 'DB', text: 'DB', figure: 'Database', fill: 'lightgray' },
-            { name: '???', text: '???', figure: 'Diamond', fill: 'lightskyblue', size: '100 60' },
-            { name: 'End', text: 'End', figure: 'Ellipse', size: '75 75', fill: '#CE0620', width: 28, height: 28, margin: new go.Margin(10, 0, 0, 8) },
-            { name: 'Comment', text: 'xxx', figure: 'RoundedRectangle', fill: 'lightyellow' }
-        ]
     },
     {
         name: 'Arrows',

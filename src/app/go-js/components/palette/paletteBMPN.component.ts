@@ -21,13 +21,6 @@ import { palNodeTemplateMap, palGroupTemplateMap } from '../../config/bmpn/palet
             [divClassName]="paletteDivClassName">
         </gojs-palette>
     `,
-    styles: [
-        `
-            .myPaletteDiv {
-                margin-top: 10px;
-            }
-        `
-    ],
     styleUrls: ['./palette.component.scss'],
     encapsulation: ViewEncapsulation.None
 })

@@ -1,7 +1,10 @@
 import { Injectable, EventEmitter } from '@angular/core';
 
+import { HttpClient } from '@angular/common/http';
+import { RequestService } from 'src/app/common/http/request.service';
+
 @Injectable()
-export class GoJsService {
+export class GoJsService extends RequestService {
 
     /* uesd params to resize */
     // 整体宽高
@@ -13,9 +16,14 @@ export class GoJsService {
     public headerHeight: number;
 
     public shareTemplate: EventEmitter<any>;
+    public nodeDataSync: EventEmitter<any>;
+    public panelSyncDiagram: EventEmitter<any>;
 
-    constructor() {
+    constructor(http: HttpClient) {
+        super(http);
         this.shareTemplate = new EventEmitter();
+        this.nodeDataSync = new EventEmitter();
+        this.panelSyncDiagram = new EventEmitter();
     }
 
     public setMainSize(w: number = 0, h: number = 0): void {
@@ -28,4 +36,10 @@ export class GoJsService {
         this.headerHeight = h;
     }
 
+    public getDetails(str: string): Promise<any> {
+        return this.get('/assets/mock/flow/' + str);
+    }
+    public saveDiaJson(param): Promise<any> {
+        return this.post('/api/workflow/saveJson',param);
+    }
 }

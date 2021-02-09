@@ -37,3 +37,19 @@ export function keyCompare(a: go.Part, b: go.Part) {
     if (at > bt) return 1;
     return 0;
 }
+
+export function assignGroupLayer(grp: go.Part): void {
+    if (!(grp instanceof go.Group)) return;
+    var lay = grp.isSelected ? "Foreground" : "";
+    grp.layerName = lay;
+    grp.findSubGraphParts().each(function (m: go.Part) { m.layerName = lay; });
+}
+
+//Generatre Guid: string
+export function guid() {
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+		var r = Math.random() * 16 | 0,
+			v = c == 'x' ? r : (r & 0x3 | 0x8);
+		return v.toString(16);
+	});
+}

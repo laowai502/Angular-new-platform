@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
 
 import { GoJsService } from '../../go-js.service';
 
@@ -10,10 +10,16 @@ import { GoJsService } from '../../go-js.service';
 })
 export class FlowMenuBar implements OnInit {
 
+    private isExtend: boolean;
+
+    @Output() extendEvent = new EventEmitter<any>();
+
     constructor(
         private el: ElementRef,
         private gjs: GoJsService
-    ) {}
+    ) {
+        this.isExtend = false;
+    }
 
     ngOnInit() {
         const { children: ele } = this.el.nativeElement;
@@ -21,7 +27,8 @@ export class FlowMenuBar implements OnInit {
     }
 
     expand() {
-
+        this.isExtend = !this.isExtend;
+        this.extendEvent.emit(this.isExtend);
     }
 
     fullScreen() {

@@ -1,0 +1,47 @@
+<div class="diagram-attr">
+    <p-tabView styleClass="diagram-attr-tab">
+        <p-tabPanel header="Flow" [selected]="currTab">
+            <form [formGroup]="flow">
+                <p-panel header="property" [toggleable]="true">
+                    <p>FlowName</p>
+                    <input formControlName="flowName" type="text" pInputText (blur)="flowsubmit(flow.value)">
+                    <p>Description</p>
+                    <textarea id="floflowDescwAd" formControlName="flowDesc" type="text" rows="10" pInputTextarea
+                        style="resize: none;"></textarea>
+                </p-panel>
+            </form>
+        </p-tabPanel>
+        <p-tabPanel header="Node" [selected]="!currTab">
+            <form [formGroup]="node" (ngSubmit)="NodeSubmit(node.value)">
+                <p-panel header="property" [toggleable]="true">
+                    <div class="p-fluid">
+                        <div class="p-field">
+                            <p>name</p>
+                            <input type="text" formControlName="nodeName" pInputText (blur)="NodeSubmit(node.value)">
+                        </div>
+                        <div class="p-field">
+                            <p>Description</p>
+                            <textarea id="nodeDesc" type="text" rows="10" formControlName="nodeDesc" pInputTextarea (blur)="NodeSubmit(node.value)"
+                                style="resize: none;"></textarea>
+                        </div>
+                    </div>
+                </p-panel>
+                <p-panel header="action" [toggleable]="true">
+                    <p>select Users</p>
+                    <p-dropdown [options]="Users" formControlName="nodeUser" [(ngModel)]="selectedUser" (ngModelChange)="NodeSubmit(node.value)"
+                        placeholder="Select a User" optionLabel="userName" [showClear]="true"></p-dropdown>
+                    &nbsp;
+                    <div class="p-field">
+                        <p>Message</p>
+                        <textarea id="Message" [value]="" type="text" rows="10" pInputTextarea
+                            style="resize: none;"></textarea>
+                    </div>
+                </p-panel>
+                <!-- <button pButton type="submit" label="Save" style="margin-top: 3px; margin-left: 55px;"></button> -->
+            </form>
+        </p-tabPanel>
+        <p-tabPanel header="Link">
+            <div></div>
+        </p-tabPanel>
+    </p-tabView>
+</div>

@@ -4,17 +4,17 @@
         <i class="fa fa-angle-double-left"></i>
         <div class="tool-bar-search">
             <input type="text" [(ngModel)]="keyword" placeholder="search" />
-            <span class="icon-group">
+            <span class="icon-group" style="top: 5px;" (click)="expand(true)" title="expand all">
                 <i class="fa fa-angle-up"></i>
             </span>
-            <span class="icon-group" style="bottom: 10px;">
+            <span class="icon-group" style="bottom: 10px;" (click)="expand(false)" title="unexpand all">
                 <i class="fa fa-angle-down"></i>
             </span>
         </div>
     </div>
     <div class="too-bar-bottom" [style.height.px]="bH">
         <p-accordion [multiple]="true">
-            <p-accordionTab *ngFor="let item of shapes" [header]="item.name" [selected]="true">
+            <p-accordionTab *ngFor="let item of shapes; let i=index" [header]="item.name" [selected]="item.selected">
                 <ng-container *ngIf="item.name == 'BMPN'">
                     <app-palette-bmpn></app-palette-bmpn>
                 </ng-container>

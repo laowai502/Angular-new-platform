@@ -1,10 +1,14 @@
 <div class="work-area">
+    <div class="save-btn">
+        <button pButton pRipple type="button" label="Save" 
+            class="p-button-raised p-button-text" (click)="saveDia()"></button>
+    </div>
     <p-tabView styleClass="work-area-tab" [controlClose]="true">
-        <p-tabPanel header="new item1" leftIcon="fa fa-file-text-o" [closable]="true">
+        <p-tabPanel [header]="flowName" leftIcon="fa fa-file-text-o" [closable]="true">
             <app-ruler></app-ruler>
             <div class="diagram-wrap" [style.height.px]="waH">
                 <gojs-diagram #go
-                    [initDiagram]="init"
+                    [initDiagram]="init.bind(this)"
                     [nodeDataArray]="node"
                     [linkDataArray]="link"
                     [modelData]="model"
@@ -12,6 +16,7 @@
                     (modelChange)="diagramModelChange($event)"
                     [divClassName]="diagramDivClassName">
                 </gojs-diagram>
+                <!-- <app-bmpn-workarea></app-bmpn-workarea> -->
             </div>
         </p-tabPanel>
     </p-tabView>

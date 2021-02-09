@@ -1,3 +1,52 @@
+/* This block is used to cover original primeng components'style */
+body {
+    .ui-accordion {
+        .ui-accordion-header {
+            margin-top: 0px;
+            margin-bottom: 0px;
+            &>a {
+                padding: 8px 0 8px 8px;
+                user-select: none;
+                color: #333333 !important;
+                background-color: #E0E0E0 !important;
+                border: none !important;
+                .ui-accordion-toggle-icon {
+                    font-size: 12px;
+                    margin-top: 3px;
+                    color: #333333 !important;
+                }
+                .ui-accordion-header-text {
+                    font-weight: 500;
+                    font-size: 13px;
+                    margin-left: 5px;
+                }
+                &:hover {
+                    text-decoration: none !important;
+                }
+            }
+            &:not(.ui-state-disabled).ui-state-active {
+                a {
+                    .ui-accordion-toggle-icon {
+                        
+                    }
+                }
+            }
+        }
+        .ui-accordion-content {
+            padding: 0;
+            border-width: 0px;
+            background: #F5F5F5;
+        }
+    }
+    
+    .ui-tabview {
+        padding: 0;
+        .ui-tabview-panels {
+            padding: 0;
+        }
+    }
+}
+
 .my-flow-control {
 
     width: 100%;
@@ -5,6 +54,14 @@
     min-height: 500px;
     background: #F5F5F5;
     // overflow-y: auto;
+
+    &.extend {
+        top: 0;
+        left: 0;
+        z-index: 999;
+        position: fixed;
+
+    }
 
     .main-content {
 

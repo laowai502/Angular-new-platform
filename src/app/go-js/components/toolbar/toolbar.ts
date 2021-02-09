@@ -16,7 +16,7 @@ export class FlowToolBar implements OnInit {
 
     keyword: string;
 
-    shapes: object;
+    shapes: Array<any>;
 
     get bH(): number {
         const { mainHeight: mH, headerHeight: hH } = this.gjs;
@@ -27,12 +27,17 @@ export class FlowToolBar implements OnInit {
     constructor(private gjs: GoJsService) {
         this.keyword = '';
         this.shapes = SHAPES;
+        this.shapes.forEach((obj:any, i:number) => {
+            obj.selected = i<2;
+        })
     }
 
     ngOnInit() {}
 
-    expand() {
-
+    expand(flag: boolean) {
+        this.shapes.forEach((obj:any) => {
+            obj.selected = flag
+        })
     }
 
     fullScreen() {

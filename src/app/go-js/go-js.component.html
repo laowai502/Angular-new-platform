@@ -1,9 +1,9 @@
-<section class="my-flow-control">
-    <app-flow-menu-bar></app-flow-menu-bar>
+<section class="my-flow-control" [class.extend]="isExtend">
+    <app-flow-menu-bar (extendEvent)="extend($event)"></app-flow-menu-bar>
     <div class="main-content">
         <app-flow-tool-bar></app-flow-tool-bar>
         <app-workarea></app-workarea>
-        <div class="prop-panel"></div>
+        <app-diagram-attr></app-diagram-attr>
     </div>
     <div class="state-bar"></div>
 </section>

@@ -1,12 +1,13 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angular';
 
 import * as go from 'gojs';
 import * as _ from 'lodash';
 
-import { GoJsService } from '../../go-js.service';
+import { ActivatedRoute } from '@angular/router';
 
-import { makePort, showSmallPorts } from '../../utils';
+import { GoJsService } from '../../go-js.service';
+import { makePort, showSmallPorts, guid } from '../../utils';
 
 @Component({
     selector: 'app-workarea',
@@ -19,19 +20,23 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
 
     get waH(): number {
         const { mainHeight: mH, headerHeight: hH } = this.gjs;
-        return mH - hH - 90;
+        return mH - hH - 75;
     }
 
-    node: any = [];
+    id: string;
+    flowName = 'new item 1';
+
     link = [];
+    node: any = [];
     model: object = { prop: 'value' };
 
     skipsDiagramUpdate = false;
     diagramDivClassName = 'test-diagram';
 
+    psdDestroy: any;
+
     public diagramModelChange(changes: go.IncrementalData) {
         this.skipsDiagramUpdate = true;
-
         this.node = DataSyncService.syncNodeData(changes, this.node);
         this.link = DataSyncService.syncLinkData(changes, this.link);
         this.model = DataSyncService.syncModelData(changes, this.model);
@@ -47,6 +52,7 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
                     $(go.Shape, 'LineV', { stroke: 'lightgray', strokeWidth: 0.5 }),
                     $(go.Shape, 'LineV', { stroke: 'gray', strokeWidth: 0.5, interval: 10 })
                 ),
+                // mouseDrop: (e) => {},
                 'draggingTool.dragsLink': true,
                 'draggingTool.isGridSnapEnabled': true,
                 'linkingTool.isUnconnectedLinkValid': true, // 允许链接目标为空
@@ -62,7 +68,7 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
                 'rotatingTool.handleAngle': 270, // 旋转操作杆位置，90的倍数
                 'rotatingTool.handleDistance': 30,
                 'rotatingTool.snapAngleMultiple': 90, // 选择角度标准
-                'rotatingTool.snapAngleEpsilon': 15, // 选择角度剩余度数进行自动吸附的角度标准
+                'rotatingTool.snapAngleEpsilon': 15, // 选择角度剩余度数进行自动吸附的角度标准,
                 'undoManager.isEnabled': true
             }
         );
@@ -127,7 +133,8 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
                         wrap: go.TextBlock.WrapFit,
                         textAlign: 'center',
                         verticalAlignment: go.Spot.Center,
-                        editable: true
+                        editable: true,
+                        textEdited: (e, p, c) => { this.syncDataToPanel(e); }
                     },
                     new go.Binding('text').makeTwoWay())
             ),
@@ -138,7 +145,8 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
             makePort('B', go.Spot.Bottom, true, false),
             { // handle mouse enter/leave events to show/hide the ports
                 mouseEnter(e, node) { showSmallPorts(node, true); },
-                mouseLeave(e, node) { showSmallPorts(node, false); }
+                mouseLeave(e, node) { showSmallPorts(node, false); },
+                click: (e, obj: go.GraphObject) => { this.syncDataToPanel(obj); }
             }
         );
 
@@ -183,16 +191,96 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
 
         dia.model = $(go.GraphLinksModel, { linkKeyProperty: 'key' });
 
+        dia.addDiagramListener('BackgroundSingleClicked', (e) => {
+            this.gjs.nodeDataSync.emit('blur');
+        });
+
         return dia;
     }
 
-    constructor(private gjs: GoJsService) { }
+    constructor(
+        private gjs: GoJsService,
+        private route: ActivatedRoute,
+    ) {
+        this.route.queryParams.subscribe(params => {
+            this.id = params.id;
+        });
+        this.psdDestroy = this.gjs.panelSyncDiagram.subscribe(e => {
+            const { flag, data } = e; 
+            if(flag === 1){
+                this.flowName = data['flowName'];
+            } else if (flag === 2) {
+                this.changeNode(data);
+            }
+        });
+    }
 
-    ngOnInit() { }
+    ngOnInit() {
+        const flowRow = JSON.parse(sessionStorage.getItem('flowRow'));
+        if (flowRow) {
+            this.flowName = flowRow.FlowName;
+        }
+        if (this.id && this.id !== '') {
+            setTimeout(() => {
+                this.gjs.getDetails(this.id).then(data => {
+                    const { diagram: myDiagram } = this.dia;
+                    function loadDiagramProperties(e?: go.DiagramEvent) {
+                        // set Diagram.initialPosition, not Diagram.position, to handle initialization side-effects
+                        const pos = myDiagram.model.modelData.position;
+                        if (pos) myDiagram.initialPosition = go.Point.parse(pos);
+                    }
+                    myDiagram.addDiagramListener('InitialLayoutCompleted', loadDiagramProperties);  // defined below
+                    // create the model from the data in the JavaScript object parsed from JSON text
+                    // myDiagram.model = new go.GraphLinksModel(jsondata["nodes"], jsondata["links"]);
+                    myDiagram.model = go.Model.fromJson(data.nodeData ? data.nodeData : data);
+                    loadDiagramProperties();
+                    myDiagram.model.undoManager.isEnabled = true;
+                    myDiagram.isModified = false;
+                }).catch(err => {
+                    console.log(err);
+                });
+            }, 200);
+        }
+    }
 
     ngAfterViewInit() {
         // const { nodeTemplate } = this.dia.diagram;
         // this.gjs.shareTemplate.emit(nodeTemplate);
+    }
+
+    ngOnDestroy() {
+        this.psdDestroy.unsubscribe();
+    }
+
+    // 同步数据给属性面板
+    syncDataToPanel(obj: go.GraphObject) {
+        if (obj.part && obj.part instanceof go.Part) {
+            if (obj.part.data) {
+                const data = obj.part.data;
+                this.gjs.nodeDataSync.emit(data);
+            }
+        }
+    }
+
+    saveDia() {
+        const { diagram } = this.dia;
+        const param = {
+            nodeData: JSON.parse(diagram.model.toJson())
+        }
+        param.nodeData.flowName = this.flowName;
+        const { nodeDataArray } = param.nodeData;
+        const reg = /^[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}$/;
+        nodeDataArray.forEach(item => {
+            if (!reg.test(item.key)) {
+                item.key = guid();
+            }
+        });
+        this.gjs.saveDiaJson(param);
+    }
+
+    changeNode(obj) {      
+        const { diagram } = this.dia;
+        diagram.model.updateTargetBindings(obj);
     }
 
 }

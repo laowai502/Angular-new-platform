@@ -10,6 +10,7 @@
             color: #242424;
             padding: 8px 8px;
             font-size: 14px;
+            font-weight: 600;
         }
     
         .fa-angle-double-left {
@@ -23,7 +24,7 @@
             position: relative;
             padding: 2px 0 10px 8px;
             width: 100%;
-            input {
+            &>input {
                 background-color: #F5F5F5;
                 border: solid 1px #bdbdbd;
                 border-radius: 3px;
@@ -31,6 +32,7 @@
                 height: 26px;
                 line-height: 26px;
                 width: 85%;
+                margin-bottom: 0px;
             }
             .icon-group {
                 right: 8px;
