@@ -4,8 +4,6 @@ import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angula
 import * as _ from 'lodash';
 import * as go from 'gojs';
 
-import { Store } from '@ngrx/store';
-import { enableLoading } from 'src/app/action/loading.action';
 import { ActivatedRoute } from '@angular/router';
 
 import { assignGroupLayer } from '../../utils';
@@ -35,14 +33,14 @@ import { nodeTemplateMap, linkTemplateMap, groupTemplateMap } from '../../config
 export class BmpnWorkareaComponent implements OnInit, AfterViewInit {
 
     id: string;
-    
+
     link = [];
     node: any = [];
     model: object = { prop: 'value' };
-    
+
     skipsDiagramUpdate = false;
     diagramDivClassName = 'test-diagram';
-    
+
     @ViewChild('go', { static: true }) public dia: DiagramComponent;
 
     public diagramModelChange(changes: go.IncrementalData) {
@@ -56,7 +54,7 @@ export class BmpnWorkareaComponent implements OnInit, AfterViewInit {
     public init(): go.Diagram {
         const $ = go.GraphObject.make;
 
-        let dia = $(go.Diagram,
+        const dia = $(go.Diagram,
             {
                 grid: $(go.Panel, 'Grid',
                     $(go.Shape, 'LineH', { stroke: 'lightgray', strokeWidth: 0.5 }),
@@ -64,30 +62,29 @@ export class BmpnWorkareaComponent implements OnInit, AfterViewInit {
                     $(go.Shape, 'LineV', { stroke: 'lightgray', strokeWidth: 0.5 }),
                     $(go.Shape, 'LineV', { stroke: 'gray', strokeWidth: 0.5, interval: 10 })
                 ),
-                nodeTemplateMap: nodeTemplateMap,
-                linkTemplateMap: linkTemplateMap,
-                groupTemplateMap: groupTemplateMap,
-
+                nodeTemplateMap,
+                linkTemplateMap,
+                groupTemplateMap,
                 commandHandler: new DrawCommandHandler(),  // defined in DrawCommandHandler.js
                 // default to having arrow keys move selected nodes
                 'commandHandler.arrowKeyBehavior': 'move',
 
-                mouseDrop: function (e: go.InputEvent) {
+                mouseDrop(e: go.InputEvent) {
                     // when the selection is dropped in the diagram's background,
                     // make sure the selected Parts no longer belong to any Group
                     const ok = dia.commandHandler.addTopLevelParts(dia.selection, true);
-                    if (!ok) dia.currentTool.doCancel();
+                    if (!ok) { dia.currentTool.doCancel(); }
                 },
                 resizingTool: new LaneResizingTool(),
                 linkingTool: new BPMNLinkingTool(), // defined in BPMNClasses.js
                 relinkingTool: new BPMNRelinkingTool(), // defined in BPMNClasses.js
                 // 'SelectionMoved': relayoutDiagram,  // defined below
                 // 'SelectionCopied': relayoutDiagram,
-                "LinkDrawn": function (e) { assignGroupLayer(e.subject.containingGroup); },
-                "LinkRelinked": function (e) { assignGroupLayer(e.subject.containingGroup); }
+                LinkDrawn(e) { assignGroupLayer(e.subject.containingGroup); },
+                LinkRelinked(e) { assignGroupLayer(e.subject.containingGroup); }
             });
 
-        dia.addDiagramListener('LinkDrawn', function (e) {
+        dia.addDiagramListener('LinkDrawn', function(e) {
             if (e.subject.fromNode.category === 'annotation') {
                 e.subject.category = 'annotation'; // annotation association
             } else if (e.subject.fromNode.category === 'dataobject' || e.subject.toNode.category === 'dataobject') {
@@ -104,8 +101,7 @@ export class BmpnWorkareaComponent implements OnInit, AfterViewInit {
 
     constructor(
         private gjs: GoJsService,
-        private route: ActivatedRoute,
-        private store: Store<{ loading: boolean }>
+        private route: ActivatedRoute
     ) {
         this.route.queryParams.subscribe(params => {
             this.id = params.id;
@@ -120,7 +116,7 @@ export class BmpnWorkareaComponent implements OnInit, AfterViewInit {
                     function loadDiagramProperties(e?: go.DiagramEvent) {
                         // set Diagram.initialPosition, not Diagram.position, to handle initialization side-effects
                         const pos = myDiagram.model.modelData.position;
-                        if (pos) myDiagram.initialPosition = go.Point.parse(pos);
+                        if (pos) { myDiagram.initialPosition = go.Point.parse(pos); }
                     }
                     myDiagram.addDiagramListener('InitialLayoutCompleted', loadDiagramProperties);  // defined below
                     // create the model from the data in the JavaScript object parsed from JSON text

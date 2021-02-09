@@ -1,7 +1,7 @@
 .work-area {
     display: inline-block;
     width: calc(100% - 226px - 200px);
-    padding: 12px 5px 12px 0;
+    padding: 12px 5px 8px 0;
     position: relative;
     @media screen and (max-width: 1366px) {
         padding: 12px 0 0 0;
@@ -70,8 +70,19 @@
                         background-color: #BFBFBF;
                     }
                 }
-
             }
+
+            /* overview */
+            // #myOverviewDiv {
+            //     top: 200px;
+            //     left: 0px;
+            //     width: 300px;
+            //     height: 300px;
+            //     z-index: 300;
+            //     background: #FFF;
+            //     position: fixed;
+            // }
+
         }
 
     }

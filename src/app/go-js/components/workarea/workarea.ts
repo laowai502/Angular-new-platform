@@ -14,7 +14,7 @@ import { makePort, showSmallPorts, guid } from '../../utils';
     templateUrl: './workarea.html',
     styleUrls: ['./workarea.scss']
 })
-export class WorkareaComponent implements OnInit, AfterViewInit {
+export class WorkareaComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @ViewChild('go', { static: true }) public dia: DiagramComponent;
 
@@ -195,6 +195,10 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
             this.gjs.nodeDataSync.emit('blur');
         });
 
+        // const myOverview =
+        //     $(go.Overview, 'myOverviewDiv',  // the HTML DIV element for the Overview
+        //         { observed: dia, contentAlignment: go.Spot.Center });
+
         return dia;
     }
 
@@ -206,9 +210,9 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
             this.id = params.id;
         });
         this.psdDestroy = this.gjs.panelSyncDiagram.subscribe(e => {
-            const { flag, data } = e; 
-            if(flag === 1){
-                this.flowName = data['flowName'];
+            const { flag, data } = e;
+            if (flag === 1) {
+                this.flowName = data.flowName;
             } else if (flag === 2) {
                 this.changeNode(data);
             }
@@ -227,7 +231,7 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
                     function loadDiagramProperties(e?: go.DiagramEvent) {
                         // set Diagram.initialPosition, not Diagram.position, to handle initialization side-effects
                         const pos = myDiagram.model.modelData.position;
-                        if (pos) myDiagram.initialPosition = go.Point.parse(pos);
+                        if (pos) { myDiagram.initialPosition = go.Point.parse(pos); }
                     }
                     myDiagram.addDiagramListener('InitialLayoutCompleted', loadDiagramProperties);  // defined below
                     // create the model from the data in the JavaScript object parsed from JSON text
@@ -266,7 +270,7 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
         const { diagram } = this.dia;
         const param = {
             nodeData: JSON.parse(diagram.model.toJson())
-        }
+        };
         param.nodeData.flowName = this.flowName;
         const { nodeDataArray } = param.nodeData;
         const reg = /^[0-9a-zA-Z]{8}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{12}$/;
@@ -278,7 +282,7 @@ export class WorkareaComponent implements OnInit, AfterViewInit {
         this.gjs.saveDiaJson(param);
     }
 
-    changeNode(obj) {      
+    changeNode(obj) {
         const { diagram } = this.dia;
         diagram.model.updateTargetBindings(obj);
     }

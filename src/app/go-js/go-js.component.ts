@@ -13,7 +13,7 @@ import './config/figure';
 @Component({
     selector: 'app-go-js',
     templateUrl: './go-js.component.html',
-    styleUrls: ['./go-js.component.scss'],
+    styleUrls: ['./go-js.component.scss', '../themes/primeng.scss'],
     encapsulation: ViewEncapsulation.None
 })
 export class GoJsComponent implements OnInit, AfterViewInit {
