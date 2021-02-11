@@ -33,23 +33,24 @@ export function showSmallPorts(node, show) {
 export function keyCompare(a: go.Part, b: go.Part) {
     const at = a.data.key;
     const bt = b.data.key;
-    if (at < bt) return -1;
-    if (at > bt) return 1;
+    if (at < bt) { return -1; }
+    if (at > bt) { return 1; }
     return 0;
 }
 
 export function assignGroupLayer(grp: go.Part): void {
-    if (!(grp instanceof go.Group)) return;
-    var lay = grp.isSelected ? "Foreground" : "";
+    if (!(grp instanceof go.Group)) { return; }
+    const lay = grp.isSelected ? 'Foreground' : '';
     grp.layerName = lay;
-    grp.findSubGraphParts().each(function (m: go.Part) { m.layerName = lay; });
+    grp.findSubGraphParts().each((m: go.Part) => { m.layerName = lay; });
 }
 
-//Generatre Guid: string
+// Generatre Guid: string
 export function guid() {
-	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-		var r = Math.random() * 16 | 0,
-			v = c == 'x' ? r : (r & 0x3 | 0x8);
+	return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+		const r = Math.random() * 16 | 0,
+            // tslint:disable-next-line:no-bitwise
+            v = c === 'x' ? r : (r & 0x3 | 0x8);
 		return v.toString(16);
 	});
 }

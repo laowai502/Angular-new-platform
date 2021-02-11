@@ -4,11 +4,22 @@ import { DataSyncService, DiagramComponent, PaletteComponent } from 'gojs-angula
 import * as go from 'gojs';
 import * as _ from 'lodash';
 
+// import { debounce } from 'rxjs/operators';
+
 import { GoJsService } from '../../go-js.service';
 
 @Component({
     selector: 'app-palette',
-    templateUrl: './palette.component.html',
+    template: `
+        <gojs-palette #pla
+            [initPalette]="initPalette"
+            [nodeDataArray]="paletteNodeData"
+            [linkDataArray]="paletteLinkData"
+            [modelData]="paletteModelData"
+            (modelChange)="paletteModelChange($event)"
+            [divClassName]="paletteDivClassName">
+        </gojs-palette>
+    `,
     styleUrls: ['./palette.component.scss'],
     encapsulation: ViewEncapsulation.None
 })
@@ -19,13 +30,14 @@ export class AppPaletteComponent implements OnInit, AfterViewInit, OnDestroy {
     @Input() nodeData: Array<any>;
     @Input() paletteName: string;
 
-    private snDestr: any;
+    paletteNodeDataCopy: Array<any> = [];
+
+    private pnsDestr: any;
 
     public paletteModelData: object = { prop: 'val' };
     public paletteDivClassName = 'myPaletteDiv';
 
     public paletteNodeData: Array<any> = [];
-
     public paletteLinkData: Array<any> = [];
 
     public paletteModelChange(changes: go.IncrementalData) {
@@ -76,20 +88,20 @@ export class AppPaletteComponent implements OnInit, AfterViewInit, OnDestroy {
         return palette;
     }
 
-    constructor(private gjs: GoJsService) {}
+    constructor(private gjs: GoJsService) {
+        this.pnsDestr = this.gjs.palNodeSearch.subscribe((kw: string) => {
+            this.filterNodeKey(kw);
+        });
+    }
 
     ngOnInit() {
         this.resetPalette();
     }
 
-    ngAfterViewInit() {
-        // this.snDestr = this.gjs.shareTemplate.subscribe(data => {
-            // this.pla.palette.nodeTemplateMap = template;
-        // });
-    }
+    ngAfterViewInit() {}
 
     ngOnDestroy() {
-        // this.snDestr.unsubscribe();
+        this.pnsDestr.unsubscribe();
     }
 
     resetPalette() {
@@ -107,7 +119,23 @@ export class AppPaletteComponent implements OnInit, AfterViewInit, OnDestroy {
                 geometryString: i.geometryString
             });
         }
+        this.paletteNodeDataCopy = this.paletteNodeData;
+        this.setPalHeight(this.nodeData.length);
+    }
+
+    filterNodeKey(kw: string) {
+        if (!!kw) {
+            const { paletteNodeDataCopy: d } = this;
+            this.paletteNodeData = d.filter(e => e.key.toLowerCase().includes(kw.toLowerCase()));
+            this.setPalHeight(this.paletteNodeData.length);
+        } else {
+            this.resetPalette();
+        }
+    }
+
+    setPalHeight(len: number) {
         const { nativeElement: ele } = this.pla.paletteDiv;
-        ele.style.height = (Math.ceil((this.nodeData.length / 4)) * 50.6) + 'px';
+        if (len < 4 && len > 0) { len = 4; }
+        ele.style.height = (Math.ceil((len / 4)) * 50.6) + 'px';
     }
 }

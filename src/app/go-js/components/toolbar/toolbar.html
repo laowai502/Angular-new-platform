@@ -1,10 +1,11 @@
-<div class="tool-bar">
+<div class="tool-bar" [style.width.px]="barWH">
     <div #top class="too-bar-top">
         <h5>Shapes</h5>
-        <i class="fa fa-angle-double-left"></i>
+        <i class="fa fa-angle-double-left" (click)="toggleBar()"></i>
+        <!-- <i class="fa fa-angle-double-right" (click)="toggleBar()"></i> -->
         <div class="tool-bar-search">
-            <input type="text" [(ngModel)]="keyword" placeholder="search" />
-            <span class="icon-group" style="top: 5px;" (click)="expand(true)" title="expand all">
+            <input #search type="text" placeholder="search" />
+            <span class="icon-group" (click)="expand(true)" title="expand all">
                 <i class="fa fa-angle-up"></i>
             </span>
             <span class="icon-group" style="bottom: 10px;" (click)="expand(false)" title="unexpand all">

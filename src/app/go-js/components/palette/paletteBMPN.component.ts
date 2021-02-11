@@ -13,11 +13,11 @@ import { palNodeTemplateMap, palGroupTemplateMap } from '../../config/bmpn/palet
     selector: 'app-palette-bmpn',
     template: `
         <gojs-palette #pa
-            [initPalette]="initPalette" 
-            [nodeDataArray]="paletteNodeData" 
+            [initPalette]="initPalette"
+            [nodeDataArray]="paletteNodeData"
             [linkDataArray]="paletteLinkData"
-            [modelData]="paletteModelData" 
-            (modelChange)="paletteModelChange($event)" 
+            [modelData]="paletteModelData"
+            (modelChange)="paletteModelChange($event)"
             [divClassName]="paletteDivClassName">
         </gojs-palette>
     `,
@@ -27,6 +27,10 @@ import { palNodeTemplateMap, palGroupTemplateMap } from '../../config/bmpn/palet
 export class AppPaletteBMPNComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @ViewChild('pa', { static: true }) public pa: PaletteComponent;
+
+    paletteNodeDataCopy: Array<any> = [];
+
+    private pnsDestr: any;
 
     public paletteModelData: object = { prop: 'val' };
     public paletteDivClassName = 'myPaletteDiv';
@@ -47,7 +51,7 @@ export class AppPaletteBMPNComponent implements OnInit, AfterViewInit, OnDestroy
             nodeTemplateMap: palNodeTemplateMap,
             groupTemplateMap: palGroupTemplateMap
         });
-        palette.model = $(go.GraphLinksModel, { 
+        palette.model = $(go.GraphLinksModel, {
             linkKeyProperty: 'key',
             copiesArrays: true,
             copiesArrayObjects: true,
@@ -55,7 +59,11 @@ export class AppPaletteBMPNComponent implements OnInit, AfterViewInit, OnDestroy
         return palette;
     }
 
-    constructor(private gjs: GoJsService) {}
+    constructor(private gjs: GoJsService) {
+        this.pnsDestr = this.gjs.palNodeSearch.subscribe((kw: string) => {
+            this.filterNodeKey(kw);
+        });
+    }
 
     ngOnInit() {
         this.resetPalette();
@@ -63,7 +71,9 @@ export class AppPaletteBMPNComponent implements OnInit, AfterViewInit, OnDestroy
 
     ngAfterViewInit() {}
 
-    ngOnDestroy() {}
+    ngOnDestroy() {
+        this.pnsDestr.unsubscribe();
+    }
 
     resetPalette() {
         this.paletteNodeData = [
@@ -88,12 +98,28 @@ export class AppPaletteBMPNComponent implements OnInit, AfterViewInit, OnDestroy
             { key: 301, category: 'dataobject', text: 'Data\nObject' },
             { key: 302, category: 'datastore', text: 'Data\nStorage' },
             { key: 401, category: 'privateProcess', text: 'Black Box' },
-            { key: '501', 'text': 'Pool 1', 'isGroup': 'true', 'category': 'Pool' },
-            { key: 'Lane5', 'text': 'Lane 1', 'isGroup': 'true', 'group': '501', 'color': 'lightyellow', 'category': 'Lane' },
-            { key: 'Lane6', 'text': 'Lane 2', 'isGroup': 'true', 'group': '501', 'color': 'lightgreen', 'category': 'Lane' },
+            { key: '501', text: 'Pool 1', isGroup: 'true', category: 'Pool' },
+            { key: 'Lane5', text: 'Lane 1', isGroup: 'true', group: '501', color: 'lightyellow', category: 'Lane' },
+            { key: 'Lane6', text: 'Lane 2', isGroup: 'true', group: '501', color: 'lightgreen', category: 'Lane' },
             { key: 701, category: 'annotation', text: 'note' }
         ];
+        this.paletteNodeDataCopy = _.cloneDeep(this.paletteNodeData);
+        this.setPalHeight(this.paletteNodeData.length);
+    }
+
+    filterNodeKey(kw: string) {
+        if (!!kw) {
+            const { paletteNodeDataCopy: d } = this;
+            this.paletteNodeData = d.filter(e => e.text.toLowerCase().includes(kw.toLowerCase()));
+            this.setPalHeight(this.paletteNodeData.length);
+        } else {
+            this.resetPalette();
+        }
+    }
+
+    setPalHeight(len: number) {
         const { nativeElement: ele } = this.pa.paletteDiv;
+        if (len < 2 && len > 0) { len = 2; }
         ele.style.height = (Math.ceil((this.paletteNodeData.length / 2)) * 60) + 'px';
     }
 }

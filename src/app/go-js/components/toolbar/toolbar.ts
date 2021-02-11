@@ -1,7 +1,11 @@
-import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit, AfterViewInit, ElementRef } from '@angular/core';
+
+import { fromEvent, timer } from 'rxjs';
+import { debounceTime, map } from 'rxjs/operators';
+
+// import * as _ from 'lodash';
 
 import { SHAPES } from '../../config/shape';
-
 import { GoJsService } from '../../go-js.service';
 
 @Component({
@@ -10,9 +14,10 @@ import { GoJsService } from '../../go-js.service';
     styleUrls: ['./toolbar.scss'],
     encapsulation: ViewEncapsulation.None
 })
-export class FlowToolBar implements OnInit {
+export class FlowToolBar implements OnInit, AfterViewInit {
 
     @ViewChild('top', { static: true }) top: ElementRef;
+    @ViewChild('search', { static: false }) search: ElementRef;
 
     keyword: string;
 
@@ -24,24 +29,46 @@ export class FlowToolBar implements OnInit {
         return mH - hH - ele.clientHeight;
     }
 
-    constructor(private gjs: GoJsService) {
-        this.keyword = '';
-        this.shapes = SHAPES;
-        this.shapes.forEach((obj:any, i:number) => {
-            obj.selected = i<2;
-        })
+    get barWH(): number {
+        return this.gjs.toolbarWh;
     }
 
-    ngOnInit() {}
+    set barWH(val: number) {
+        this.gjs.toolbarWh = val;
+    }
+
+    constructor(private gjs: GoJsService) {
+        this.shapes = SHAPES;
+        this.shapes.forEach((obj: any, i: number) => {
+            obj.selected = i < 2;
+        });
+    }
+
+    ngOnInit() {
+        this.barWH = 220;
+        this.keyword = '';
+    }
+
+    ngAfterViewInit() {
+        const input = this.search.nativeElement;
+        fromEvent(input, 'keyup')
+            // tslint:disable-next-line:no-string-literal
+            .pipe(map(i => i['currentTarget'].value))
+            .pipe(debounceTime(500))
+            .subscribe(val => {
+                this.gjs.palNodeSearch.emit(val);
+            });
+    }
 
     expand(flag: boolean) {
-        this.shapes.forEach((obj:any) => {
-            obj.selected = flag
-        })
+        this.shapes.forEach((obj: any) => {
+            obj.selected = flag;
+        });
     }
 
-    fullScreen() {
 
+    toggleBar() {
+        this.barWH = this.barWH === 220 ? 0 : 220;
     }
 
 

@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, ViewChild, ViewEncapsulation, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
-
 import { GoJsService } from '../../go-js.service';
 
 @Component({
@@ -10,9 +9,11 @@ import { GoJsService } from '../../go-js.service';
 })
 export class FlowMenuBar implements OnInit {
 
+    private isFull: boolean;
     private isExtend: boolean;
 
-    @Output() extendEvent = new EventEmitter<any>();
+    @Output() fullScreen = new EventEmitter<boolean>();
+    @Output() extendEvent = new EventEmitter<boolean>();
 
     constructor(
         private el: ElementRef,
@@ -31,8 +32,9 @@ export class FlowMenuBar implements OnInit {
         this.extendEvent.emit(this.isExtend);
     }
 
-    fullScreen() {
-
+    doFullScreen() {
+        this.isFull = !this.isFull;
+        this.fullScreen.emit(this.isFull);
     }
 
 }

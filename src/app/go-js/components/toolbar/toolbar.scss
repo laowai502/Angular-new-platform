@@ -1,5 +1,4 @@
 .tool-bar {
-    width: 226px;
     transition: .3s;
     position: relative;
     display: inline-block;
@@ -18,7 +17,20 @@
             font-size: 18px;
             right: 12px;
             top: 9px;
+            &:hover {
+                color: #1E90FF;
+                cursor: pointer;
+            }
         }
+
+        // .fa-angle-double-right {
+        //     position: fixed;
+        //     width: 20px;
+        //     height: 30px;
+        //     left: 0;
+        //     top: 85px;
+        //     z-index: 200;
+        // }
     
         .tool-bar-search {
             position: relative;

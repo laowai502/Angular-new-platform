@@ -15,15 +15,20 @@ export class GoJsService extends RequestService {
     public headerWidth: number;
     public headerHeight: number;
 
-    public shareTemplate: EventEmitter<any>;
-    public nodeDataSync: EventEmitter<any>;
-    public panelSyncDiagram: EventEmitter<any>;
+    // toolbar宽高
+    public toolbarH: number;
+    public toolbarWh: number;
+
+    public nodeDataSync: EventEmitter<any>; // diagram同步数据到属性面板
+    public panelSyncDiagram: EventEmitter<any>; // 属性面板同步到diagram
+
+    public palNodeSearch: EventEmitter<string>;
 
     constructor(http: HttpClient) {
         super(http);
-        this.shareTemplate = new EventEmitter();
         this.nodeDataSync = new EventEmitter();
         this.panelSyncDiagram = new EventEmitter();
+        this.palNodeSearch = new EventEmitter();
     }
 
     public setMainSize(w: number = 0, h: number = 0): void {

@@ -10,6 +10,8 @@ import * as _ from 'lodash';
 
 import './config/figure';
 
+import { requestFullScreen, exitFull } from './utils/fullscreen';
+
 @Component({
     selector: 'app-go-js',
     templateUrl: './go-js.component.html',
@@ -54,6 +56,15 @@ export class GoJsComponent implements OnInit, AfterViewInit {
         setTimeout(() => {
             this.dealResize();
         });
+    }
+
+    fullScreen(bool: boolean) {
+        const { nativeElement: ele } = this.el;
+        if (bool) {
+            requestFullScreen(ele);
+        } else {
+            exitFull();
+        }
     }
 
 }

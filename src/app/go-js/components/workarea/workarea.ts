@@ -18,7 +18,12 @@ export class WorkareaComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @ViewChild('go', { static: true }) public dia: DiagramComponent;
 
-    get waH(): number {
+    get WH(): number {
+        const { mainWidth: mW, toolbarWh: tW } = this.gjs;
+        return mW - tW - 6 - 200;
+    }
+    
+    get MH(): number {
         const { mainHeight: mH, headerHeight: hH } = this.gjs;
         return mH - hH - 75;
     }
@@ -247,10 +252,7 @@ export class WorkareaComponent implements OnInit, OnDestroy, AfterViewInit {
         }
     }
 
-    ngAfterViewInit() {
-        // const { nodeTemplate } = this.dia.diagram;
-        // this.gjs.shareTemplate.emit(nodeTemplate);
-    }
+    ngAfterViewInit() {}
 
     ngOnDestroy() {
         this.psdDestroy.unsubscribe();

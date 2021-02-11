@@ -1,4 +1,4 @@
-<div class="work-area">
+<div class="work-area" [style.width.px]="WH">
     <div class="save-btn">
         <button pButton pRipple type="button" label="Save" 
             class="p-button-raised p-button-text" (click)="saveDia()"></button>
@@ -6,7 +6,7 @@
     <p-tabView styleClass="work-area-tab" [controlClose]="true">
         <p-tabPanel [header]="flowName" leftIcon="fa fa-file-text-o" [closable]="true">
             <app-ruler></app-ruler>
-            <div class="diagram-wrap" [style.height.px]="waH">
+            <div class="diagram-wrap" [style.height.px]="MH">
                 <gojs-diagram #go
                     [initDiagram]="init.bind(this)"
                     [nodeDataArray]="node"
