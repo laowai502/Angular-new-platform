@@ -3,7 +3,7 @@
       "version": "1.0.1",
       "scripts": {
             "ng": "ng",
-            "start": "ng serve",
+            "start": "ng serve --port=4202 --open",
             "build": "ng build --prod",
             "test": "ng test",
             "lint": "ng lint",

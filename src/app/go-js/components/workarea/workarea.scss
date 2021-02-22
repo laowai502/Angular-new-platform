@@ -4,7 +4,7 @@
     padding: 10px 5px 8px 0;
     position: relative;
     @media screen and (max-width: 1366px) {
-        padding: 12px 0 0 0;
+        padding: 8px 0 0 0;
     }
 
     .save-btn {
@@ -45,6 +45,7 @@
 
             &::-webkit-scrollbar {
                 width: 6px;
+                height: 10px;
             }
             &::-webkit-scrollbar-thumb {
                 border-radius: 4px;
@@ -54,9 +55,10 @@
 
             .test-diagram {
                 background: #FFF;
-                width: 84%;
-                height: 140%;
-                margin: 30px 8% 8%;
+                width: 120%;
+                height: 400%;
+                // margin: 30px 8% 8%;
+                margin: 50px 55px;
                 border: 1px solid black;
                 display: inline-block;
 

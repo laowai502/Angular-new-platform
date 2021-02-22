@@ -52,12 +52,16 @@ export class WorkareaComponent implements OnInit, OnDestroy, AfterViewInit {
         const dia = $(go.Diagram,
             {
                 grid: $(go.Panel, 'Grid',
-                    $(go.Shape, 'LineH', { stroke: 'lightgray', strokeWidth: 0.5 }),
-                    $(go.Shape, 'LineH', { stroke: 'gray', strokeWidth: 0.5, interval: 10 }),
-                    $(go.Shape, 'LineV', { stroke: 'lightgray', strokeWidth: 0.5 }),
-                    $(go.Shape, 'LineV', { stroke: 'gray', strokeWidth: 0.5, interval: 10 })
+                    $(go.Shape, 'LineH', { stroke: '#F2F2F2', strokeWidth: 1 }),
+                    $(go.Shape, 'LineH', { stroke: '#DCDCDC', strokeWidth: 1, interval: 5 }),
+                    $(go.Shape, 'LineV', { stroke: '#F2F2F2', strokeWidth: 1 }),
+                    $(go.Shape, 'LineV', { stroke: '#DCDCDC', strokeWidth: 1, interval: 5 })
                 ),
-                // mouseDrop: (e) => {},
+                padding: 0,
+                allowVerticalScroll: false,
+                allowHorizontalScroll: false,
+                // initialDocumentSpot: go.Spot.Top,
+                // initialViewportSpot: go.Spot.Left,
                 'draggingTool.dragsLink': true,
                 'draggingTool.isGridSnapEnabled': true,
                 'linkingTool.isUnconnectedLinkValid': true, // 允许链接目标为空

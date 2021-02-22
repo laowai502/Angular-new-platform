@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+import { DirectiveModule } from '../directive/directive.module';
+
 import { GoJsRoutingModule, Components } from './go-js-routing.module';
 
 import { AppPaletteComponent } from './components/palette/palette.component';
@@ -43,6 +45,7 @@ import {DropdownModule} from 'primeng/dropdown';
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
+        DirectiveModule,
         GoJsRoutingModule,
         GojsAngularModule,
         AccordionModule,

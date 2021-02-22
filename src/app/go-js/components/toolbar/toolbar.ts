@@ -45,7 +45,7 @@ export class FlowToolBar implements OnInit, AfterViewInit {
     }
 
     ngOnInit() {
-        this.barWH = 220;
+        this.barWH = 226;
         this.keyword = '';
     }
 
@@ -68,7 +68,7 @@ export class FlowToolBar implements OnInit, AfterViewInit {
 
 
     toggleBar() {
-        this.barWH = this.barWH === 220 ? 0 : 220;
+        this.barWH = this.barWH === 226 ? 0 : 226;
     }
 
 
