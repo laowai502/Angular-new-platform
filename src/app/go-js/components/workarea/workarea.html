@@ -6,7 +6,7 @@
     <p-tabView styleClass="work-area-tab" [controlClose]="true">
         <p-tabPanel [header]="flowName" leftIcon="fa fa-file-text-o" [closable]="true">
             <app-ruler></app-ruler>
-            <div myDragScrolling class="diagram-wrap" [style.height.px]="MH">
+            <div WorkareaDragScrolling class="diagram-wrap" [style.height.px]="MH">
                 <gojs-diagram #go
                     [initDiagram]="init.bind(this)"
                     [nodeDataArray]="node"

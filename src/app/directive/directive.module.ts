@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
 import { SpinnersDirective } from './spinners.directive';
-import { DragScrollingDirective } from './drag-scrolling.directive';
+import { WorkareaDragScrolDirective } from './drag-scrolling.directive';
 
 @NgModule({
-    declarations: [SpinnersDirective, DragScrollingDirective],
-    exports: [SpinnersDirective, DragScrollingDirective],
+    declarations: [SpinnersDirective, WorkareaDragScrolDirective],
+    exports: [SpinnersDirective, WorkareaDragScrolDirective],
     imports: []
 })
 export class DirectiveModule {}
